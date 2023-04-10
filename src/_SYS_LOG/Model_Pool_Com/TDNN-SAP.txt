@@ -1,0 +1,541 @@
+
+(base) C:\Users\lkwlv>cd C:\Users\lkwlv\Desktop\VoiceprintRecognition-Pytorch-develop
+
+(base) C:\Users\lkwlv\Desktop\VoiceprintRecognition-Pytorch-develop>python train.py
+C:\Users\lkwlv\anaconda3\lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+[2023-03-30 01:14:23.555620 INFO   ] utils:print_arguments:13 - ----------- 额外配置参数 -----------
+[2023-03-30 01:14:23.556620 INFO   ] utils:print_arguments:15 - augment_conf_path: configs/augmentation.json
+[2023-03-30 01:14:23.556620 INFO   ] utils:print_arguments:15 - configs: configs/ecapa_tdnn.yml
+[2023-03-30 01:14:23.556620 INFO   ] utils:print_arguments:15 - local_rank: 0
+[2023-03-30 01:14:23.556620 INFO   ] utils:print_arguments:15 - pretrained_model: None
+[2023-03-30 01:14:23.557620 INFO   ] utils:print_arguments:15 - resume_model: None
+[2023-03-30 01:14:23.557620 INFO   ] utils:print_arguments:15 - save_model_path: models/TDNN-ASP/
+[2023-03-30 01:14:23.557620 INFO   ] utils:print_arguments:15 - use_gpu: True
+[2023-03-30 01:14:23.557620 INFO   ] utils:print_arguments:16 - ------------------------------------------------
+[2023-03-30 01:14:23.587620 INFO   ] utils:print_arguments:18 - ----------- 配置文件参数 -----------
+[2023-03-30 01:14:23.588619 INFO   ] utils:print_arguments:21 - dataset_conf:
+[2023-03-30 01:14:23.588619 INFO   ] utils:print_arguments:28 -         batch_size: 64
+[2023-03-30 01:14:23.588619 INFO   ] utils:print_arguments:28 -         chunk_duration: 3
+[2023-03-30 01:14:23.589622 INFO   ] utils:print_arguments:28 -         do_vad: False
+[2023-03-30 01:14:23.589622 INFO   ] utils:print_arguments:28 -         min_duration: 0.5
+[2023-03-30 01:14:23.589622 INFO   ] utils:print_arguments:28 -         num_speakers: 50
+[2023-03-30 01:14:23.589622 INFO   ] utils:print_arguments:28 -         num_workers: 4
+[2023-03-30 01:14:23.589622 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-30 01:14:23.590623 INFO   ] utils:print_arguments:28 -         target_dB: -20
+[2023-03-30 01:14:23.590623 INFO   ] utils:print_arguments:28 -         test_list: dataset/test_list.txt
+[2023-03-30 01:14:23.590623 INFO   ] utils:print_arguments:28 -         train_list: dataset/train_list.txt
+[2023-03-30 01:14:23.590623 INFO   ] utils:print_arguments:28 -         use_dB_normalization: True
+[2023-03-30 01:14:23.590623 INFO   ] utils:print_arguments:21 - feature_conf:
+[2023-03-30 01:14:23.590623 INFO   ] utils:print_arguments:28 -         f_max: 14000.0
+[2023-03-30 01:14:23.591620 INFO   ] utils:print_arguments:28 -         f_min: 50.0
+[2023-03-30 01:14:23.591620 INFO   ] utils:print_arguments:28 -         hop_length: 320
+[2023-03-30 01:14:23.592623 INFO   ] utils:print_arguments:28 -         n_fft: 1024
+[2023-03-30 01:14:23.592623 INFO   ] utils:print_arguments:28 -         n_mels: 64
+[2023-03-30 01:14:23.593622 INFO   ] utils:print_arguments:28 -         n_mfcc: 64
+[2023-03-30 01:14:23.593622 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-30 01:14:23.593622 INFO   ] utils:print_arguments:28 -         win_length: 1024
+[2023-03-30 01:14:23.594621 INFO   ] utils:print_arguments:21 - model_conf:
+[2023-03-30 01:14:23.594621 INFO   ] utils:print_arguments:28 -         channels: 512
+[2023-03-30 01:14:23.594621 INFO   ] utils:print_arguments:28 -         embd_dim: 192
+[2023-03-30 01:14:23.595622 INFO   ] utils:print_arguments:28 -         pooling_type: SAP
+[2023-03-30 01:14:23.595622 INFO   ] utils:print_arguments:21 - optimizer_conf:
+[2023-03-30 01:14:23.596622 INFO   ] utils:print_arguments:28 -         learning_rate: 0.001
+[2023-03-30 01:14:23.596622 INFO   ] utils:print_arguments:28 -         optimizer: Adam
+[2023-03-30 01:14:23.596622 INFO   ] utils:print_arguments:28 -         weight_decay: 1e-6
+[2023-03-30 01:14:23.597621 INFO   ] utils:print_arguments:21 - preprocess_conf:
+[2023-03-30 01:14:23.597621 INFO   ] utils:print_arguments:28 -         feature_method: MFCC
+[2023-03-30 01:14:23.598622 INFO   ] utils:print_arguments:21 - train_conf:
+[2023-03-30 01:14:23.598622 INFO   ] utils:print_arguments:28 -         log_interval: 100
+[2023-03-30 01:14:23.598622 INFO   ] utils:print_arguments:28 -         max_epoch: 40
+[2023-03-30 01:14:23.599622 INFO   ] utils:print_arguments:30 - use_loss: CELoss
+[2023-03-30 01:14:23.599622 INFO   ] utils:print_arguments:30 - use_model: TDNN
+[2023-03-30 01:14:23.600621 INFO   ] utils:print_arguments:31 - ------------------------------------------------
+C:\Users\lkwlv\anaconda3\lib\site-packages\torchaudio\functional\functional.py:571: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (64) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+[2023-03-30 01:14:23.758621 WARNING] trainer:__init__:66 - Windows系统不支持多线程读取数据，已自动关闭！
+[2023-03-30 01:14:23.760621 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'noise', 'aug_type': 'audio', 'params': {'min_snr_dB': 10, 'max_snr_dB': 50, 'repetition': 2, 'noise_dir': 'dataset/noise/'}, 'prob': 0.0}
+[2023-03-30 01:14:23.760621 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'resample', 'aug_type': 'audio', 'params': {'new_sample_rate': [8000, 32000, 44100, 48000]}, 'prob': 0.0}
+[2023-03-30 01:14:23.761621 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'speed', 'aug_type': 'audio', 'params': {'min_speed_rate': 0.9, 'max_speed_rate': 1.1, 'num_rates': 3}, 'prob': 0.5}
+[2023-03-30 01:14:23.761621 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'shift', 'aug_type': 'audio', 'params': {'min_shift_ms': -5, 'max_shift_ms': 5}, 'prob': 0.0}
+[2023-03-30 01:14:23.762621 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'volume', 'aug_type': 'audio', 'params': {'min_gain_dBFS': -15, 'max_gain_dBFS': 15}, 'prob': 0.5}
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+SpeakerIdetification                     [1, 50]                   --
+├─TDNN: 1-1                              [1, 192]                  --
+│    └─Conv1d: 2-1                       [1, 512, 94]              164,352
+│    └─BatchNorm1d: 2-2                  [1, 512, 94]              1,024
+│    └─Conv1d: 2-3                       [1, 512, 90]              786,944
+│    └─BatchNorm1d: 2-4                  [1, 512, 90]              1,024
+│    └─Conv1d: 2-5                       [1, 512, 84]              786,944
+│    └─BatchNorm1d: 2-6                  [1, 512, 84]              1,024
+│    └─Conv1d: 2-7                       [1, 512, 84]              262,656
+│    └─BatchNorm1d: 2-8                  [1, 512, 84]              1,024
+│    └─Conv1d: 2-9                       [1, 512, 84]              262,656
+│    └─SelfAttentivePooling: 2-10        [1, 512]                  --
+│    │    └─Conv1d: 3-1                  [1, 128, 84]              65,664
+│    │    └─Conv1d: 3-2                  [1, 512, 84]              66,048
+│    └─BatchNorm1d: 2-11                 [1, 512]                  1,024
+│    └─Linear: 2-12                      [1, 192]                  98,496
+│    └─BatchNorm1d: 2-13                 [1, 192]                  384
+├─Dropout: 1-2                           [1, 192]                  --
+├─Linear: 1-3                            [1, 50]                   9,650
+==========================================================================================
+Total params: 2,508,914
+Trainable params: 2,508,914
+Non-trainable params: 0
+Total mult-adds (M): 207.68
+==========================================================================================
+Input size (MB): 0.03
+Forward/backward pass size (MB): 3.67
+Params size (MB): 10.04
+Estimated Total Size (MB): 13.73
+==========================================================================================
+[2023-03-30 01:14:25.732620 INFO   ] trainer:train:337 - 训练数据：187
+Traceback (most recent call last):
+  File "C:\Users\lkwlv\Desktop\VoiceprintRecognition-Pytorch-develop\train.py", line 22, in <module>
+    trainer.train(save_model_path=args.save_model_path,
+  File "C:\Users\lkwlv\Desktop\VoiceprintRecognition-Pytorch-develop\mvector\trainer.py", line 341, in train
+    last_epoch, best_eer = self.__load_checkpoint(save_model_path=save_model_path, resume_model=resume_model)
+  File "C:\Users\lkwlv\Desktop\VoiceprintRecognition-Pytorch-develop\mvector\trainer.py", line 204, in __load_checkpoint
+    self.model.load_state_dict(state_dict)
+  File "C:\Users\lkwlv\anaconda3\lib\site-packages\torch\nn\modules\module.py", line 1667, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for SpeakerIdetification:
+        size mismatch for backbone.bn5.weight: copying a param with shape torch.Size([1024]) from checkpoint, the shape in current model is torch.Size([512]).
+        size mismatch for backbone.bn5.bias: copying a param with shape torch.Size([1024]) from checkpoint, the shape in current model is torch.Size([512]).
+        size mismatch for backbone.bn5.running_mean: copying a param with shape torch.Size([1024]) from checkpoint, the shape in current model is torch.Size([512]).
+        size mismatch for backbone.bn5.running_var: copying a param with shape torch.Size([1024]) from checkpoint, the shape in current model is torch.Size([512]).
+        size mismatch for backbone.linear.weight: copying a param with shape torch.Size([192, 1024]) from checkpoint, the shape in current model is torch.Size([192, 512]).
+
+(base) C:\Users\lkwlv\Desktop\VoiceprintRecognition-Pytorch-develop>python train.py
+C:\Users\lkwlv\anaconda3\lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+[2023-03-30 01:15:53.741837 INFO   ] utils:print_arguments:13 - ----------- 额外配置参数 -----------
+[2023-03-30 01:15:53.741837 INFO   ] utils:print_arguments:15 - augment_conf_path: configs/augmentation.json
+[2023-03-30 01:15:53.742834 INFO   ] utils:print_arguments:15 - configs: configs/ecapa_tdnn.yml
+[2023-03-30 01:15:53.743835 INFO   ] utils:print_arguments:15 - local_rank: 0
+[2023-03-30 01:15:53.743835 INFO   ] utils:print_arguments:15 - pretrained_model: None
+[2023-03-30 01:15:53.744838 INFO   ] utils:print_arguments:15 - resume_model: None
+[2023-03-30 01:15:53.744838 INFO   ] utils:print_arguments:15 - save_model_path: models/TDNN-SAP/
+[2023-03-30 01:15:53.744838 INFO   ] utils:print_arguments:15 - use_gpu: True
+[2023-03-30 01:15:53.745839 INFO   ] utils:print_arguments:16 - ------------------------------------------------
+[2023-03-30 01:15:53.771835 INFO   ] utils:print_arguments:18 - ----------- 配置文件参数 -----------
+[2023-03-30 01:15:53.771835 INFO   ] utils:print_arguments:21 - dataset_conf:
+[2023-03-30 01:15:53.772836 INFO   ] utils:print_arguments:28 -         batch_size: 64
+[2023-03-30 01:15:53.773837 INFO   ] utils:print_arguments:28 -         chunk_duration: 3
+[2023-03-30 01:15:53.773837 INFO   ] utils:print_arguments:28 -         do_vad: False
+[2023-03-30 01:15:53.773837 INFO   ] utils:print_arguments:28 -         min_duration: 0.5
+[2023-03-30 01:15:53.774836 INFO   ] utils:print_arguments:28 -         num_speakers: 50
+[2023-03-30 01:15:53.774836 INFO   ] utils:print_arguments:28 -         num_workers: 4
+[2023-03-30 01:15:53.775836 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-30 01:15:53.775836 INFO   ] utils:print_arguments:28 -         target_dB: -20
+[2023-03-30 01:15:53.775836 INFO   ] utils:print_arguments:28 -         test_list: dataset/test_list.txt
+[2023-03-30 01:15:53.776834 INFO   ] utils:print_arguments:28 -         train_list: dataset/train_list.txt
+[2023-03-30 01:15:53.776834 INFO   ] utils:print_arguments:28 -         use_dB_normalization: True
+[2023-03-30 01:15:53.776834 INFO   ] utils:print_arguments:21 - feature_conf:
+[2023-03-30 01:15:53.777836 INFO   ] utils:print_arguments:28 -         f_max: 14000.0
+[2023-03-30 01:15:53.777836 INFO   ] utils:print_arguments:28 -         f_min: 50.0
+[2023-03-30 01:15:53.778835 INFO   ] utils:print_arguments:28 -         hop_length: 320
+[2023-03-30 01:15:53.778835 INFO   ] utils:print_arguments:28 -         n_fft: 1024
+[2023-03-30 01:15:53.778835 INFO   ] utils:print_arguments:28 -         n_mels: 64
+[2023-03-30 01:15:53.779836 INFO   ] utils:print_arguments:28 -         n_mfcc: 64
+[2023-03-30 01:15:53.779836 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-30 01:15:53.780835 INFO   ] utils:print_arguments:28 -         win_length: 1024
+[2023-03-30 01:15:53.780835 INFO   ] utils:print_arguments:21 - model_conf:
+[2023-03-30 01:15:53.780835 INFO   ] utils:print_arguments:28 -         channels: 512
+[2023-03-30 01:15:53.781836 INFO   ] utils:print_arguments:28 -         embd_dim: 192
+[2023-03-30 01:15:53.781836 INFO   ] utils:print_arguments:28 -         pooling_type: SAP
+[2023-03-30 01:15:53.782836 INFO   ] utils:print_arguments:21 - optimizer_conf:
+[2023-03-30 01:15:53.782836 INFO   ] utils:print_arguments:28 -         learning_rate: 0.001
+[2023-03-30 01:15:53.782836 INFO   ] utils:print_arguments:28 -         optimizer: Adam
+[2023-03-30 01:15:53.783836 INFO   ] utils:print_arguments:28 -         weight_decay: 1e-6
+[2023-03-30 01:15:53.783836 INFO   ] utils:print_arguments:21 - preprocess_conf:
+[2023-03-30 01:15:53.783836 INFO   ] utils:print_arguments:28 -         feature_method: MFCC
+[2023-03-30 01:15:53.784835 INFO   ] utils:print_arguments:21 - train_conf:
+[2023-03-30 01:15:53.784835 INFO   ] utils:print_arguments:28 -         log_interval: 100
+[2023-03-30 01:15:53.785834 INFO   ] utils:print_arguments:28 -         max_epoch: 40
+[2023-03-30 01:15:53.789835 INFO   ] utils:print_arguments:30 - use_loss: CELoss
+[2023-03-30 01:15:53.789835 INFO   ] utils:print_arguments:30 - use_model: TDNN
+[2023-03-30 01:15:53.790835 INFO   ] utils:print_arguments:31 - ------------------------------------------------
+C:\Users\lkwlv\anaconda3\lib\site-packages\torchaudio\functional\functional.py:571: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (64) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+[2023-03-30 01:15:53.936835 WARNING] trainer:__init__:66 - Windows系统不支持多线程读取数据，已自动关闭！
+[2023-03-30 01:15:53.939837 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'noise', 'aug_type': 'audio', 'params': {'min_snr_dB': 10, 'max_snr_dB': 50, 'repetition': 2, 'noise_dir': 'dataset/noise/'}, 'prob': 0.0}
+[2023-03-30 01:15:53.939837 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'resample', 'aug_type': 'audio', 'params': {'new_sample_rate': [8000, 32000, 44100, 48000]}, 'prob': 0.0}
+[2023-03-30 01:15:53.940835 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'speed', 'aug_type': 'audio', 'params': {'min_speed_rate': 0.9, 'max_speed_rate': 1.1, 'num_rates': 3}, 'prob': 0.5}
+[2023-03-30 01:15:53.940835 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'shift', 'aug_type': 'audio', 'params': {'min_shift_ms': -5, 'max_shift_ms': 5}, 'prob': 0.0}
+[2023-03-30 01:15:53.941837 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'volume', 'aug_type': 'audio', 'params': {'min_gain_dBFS': -15, 'max_gain_dBFS': 15}, 'prob': 0.5}
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+SpeakerIdetification                     [1, 50]                   --
+├─TDNN: 1-1                              [1, 192]                  --
+│    └─Conv1d: 2-1                       [1, 512, 94]              164,352
+│    └─BatchNorm1d: 2-2                  [1, 512, 94]              1,024
+│    └─Conv1d: 2-3                       [1, 512, 90]              786,944
+│    └─BatchNorm1d: 2-4                  [1, 512, 90]              1,024
+│    └─Conv1d: 2-5                       [1, 512, 84]              786,944
+│    └─BatchNorm1d: 2-6                  [1, 512, 84]              1,024
+│    └─Conv1d: 2-7                       [1, 512, 84]              262,656
+│    └─BatchNorm1d: 2-8                  [1, 512, 84]              1,024
+│    └─Conv1d: 2-9                       [1, 512, 84]              262,656
+│    └─SelfAttentivePooling: 2-10        [1, 512]                  --
+│    │    └─Conv1d: 3-1                  [1, 128, 84]              65,664
+│    │    └─Conv1d: 3-2                  [1, 512, 84]              66,048
+│    └─BatchNorm1d: 2-11                 [1, 512]                  1,024
+│    └─Linear: 2-12                      [1, 192]                  98,496
+│    └─BatchNorm1d: 2-13                 [1, 192]                  384
+├─Dropout: 1-2                           [1, 192]                  --
+├─Linear: 1-3                            [1, 50]                   9,650
+==========================================================================================
+Total params: 2,508,914
+Trainable params: 2,508,914
+Non-trainable params: 0
+Total mult-adds (M): 207.68
+==========================================================================================
+Input size (MB): 0.03
+Forward/backward pass size (MB): 3.67
+Params size (MB): 10.04
+Estimated Total Size (MB): 13.73
+==========================================================================================
+[2023-03-30 01:15:56.060221 INFO   ] trainer:train:337 - 训练数据：187
+[2023-03-30 01:16:01.568436 INFO   ] trainer:__train_epoch:285 - Train epoch: [1/40], batch: [0/3], loss: 4.15111, accuracy: 0.01562, learning rate: 0.00100000, speed: 11.62 data/sec, eta: 0:11:00
+[2023-03-30 01:16:09.938400 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.56s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.01it/s]
+[2023-03-30 01:16:17.078564 INFO   ] trainer:train:361 - Test epoch: 1, time/epoch: 0:00:21.017342, threshold: 0.99, tpr: 0.95333, fpr: 0.63449, eer: 0.68116
+[2023-03-30 01:16:17.078564 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:16:17.123564 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:16:17.200051 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_1
+[2023-03-30 01:16:21.955031 INFO   ] trainer:__train_epoch:285 - Train epoch: [2/40], batch: [0/3], loss: 2.58443, accuracy: 0.57812, learning rate: 0.00099893, speed: 13.47 data/sec, eta: 0:09:16
+[2023-03-30 01:16:30.074309 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.53s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6667.15it/s]
+[2023-03-30 01:16:37.146835 INFO   ] trainer:train:361 - Test epoch: 2, time/epoch: 0:00:19.945785, threshold: 0.99, tpr: 0.78000, fpr: 0.08367, eer: 0.30367
+[2023-03-30 01:16:37.146835 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:16:37.198835 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:16:37.328352 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_2
+[2023-03-30 01:16:42.083150 INFO   ] trainer:__train_epoch:285 - Train epoch: [3/40], batch: [0/3], loss: 2.12065, accuracy: 0.60938, learning rate: 0.00099572, speed: 13.46 data/sec, eta: 0:09:02
+[2023-03-30 01:16:50.622003 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.68s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7143.25it/s]
+[2023-03-30 01:16:58.010188 INFO   ] trainer:train:361 - Test epoch: 3, time/epoch: 0:00:20.681836, threshold: 0.98, tpr: 0.80667, fpr: 0.09204, eer: 0.28537
+[2023-03-30 01:16:58.011188 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:16:58.064188 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:16:58.148188 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_3
+[2023-03-30 01:17:02.861915 INFO   ] trainer:__train_epoch:285 - Train epoch: [4/40], batch: [0/3], loss: 1.92377, accuracy: 0.64062, learning rate: 0.00099039, speed: 13.58 data/sec, eta: 0:08:43
+[2023-03-30 01:17:11.510367 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.60s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6250.64it/s]
+[2023-03-30 01:17:18.723063 INFO   ] trainer:train:361 - Test epoch: 4, time/epoch: 0:00:20.574875, threshold: 0.97, tpr: 0.75333, fpr: 0.03286, eer: 0.27952
+[2023-03-30 01:17:18.724061 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:17:18.774063 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:17:18.859061 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_4
+[2023-03-30 01:17:23.967248 INFO   ] trainer:__train_epoch:285 - Train epoch: [5/40], batch: [0/3], loss: 1.59949, accuracy: 0.75000, learning rate: 0.00098296, speed: 12.53 data/sec, eta: 0:09:11
+[2023-03-30 01:17:32.459112 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.56s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7143.74it/s]
+[2023-03-30 01:17:39.589665 INFO   ] trainer:train:361 - Test epoch: 5, time/epoch: 0:00:20.730603, threshold: 0.93, tpr: 0.81333, fpr: 0.05592, eer: 0.24259
+[2023-03-30 01:17:39.590665 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:17:39.641665 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:17:39.729665 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_5
+[2023-03-30 01:17:44.706957 INFO   ] trainer:__train_epoch:285 - Train epoch: [6/40], batch: [0/3], loss: 1.19700, accuracy: 0.82812, learning rate: 0.00097347, speed: 12.86 data/sec, eta: 0:08:42
+[2023-03-30 01:17:53.012572 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.55s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6445.14it/s]
+[2023-03-30 01:18:00.126497 INFO   ] trainer:train:361 - Test epoch: 6, time/epoch: 0:00:20.395833, threshold: 0.89, tpr: 0.81333, fpr: 0.04245, eer: 0.22912
+[2023-03-30 01:18:00.127498 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:18:00.175500 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:18:00.272500 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_6
+[2023-03-30 01:18:05.276187 INFO   ] trainer:__train_epoch:285 - Train epoch: [7/40], batch: [0/3], loss: 0.84792, accuracy: 0.92188, learning rate: 0.00096194, speed: 12.79 data/sec, eta: 0:08:30
+[2023-03-30 01:18:13.607226 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.42s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.89it/s]
+[2023-03-30 01:18:20.473951 INFO   ] trainer:train:361 - Test epoch: 7, time/epoch: 0:00:20.201451, threshold: 0.79, tpr: 0.86667, fpr: 0.05857, eer: 0.19190
+[2023-03-30 01:18:20.473951 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:18:20.519949 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:18:20.614949 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_7
+[2023-03-30 01:18:25.453014 INFO   ] trainer:__train_epoch:285 - Train epoch: [8/40], batch: [0/3], loss: 0.85684, accuracy: 0.89062, learning rate: 0.00094844, speed: 13.23 data/sec, eta: 0:07:58
+[2023-03-30 01:18:34.413116 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.54s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6250.08it/s]
+[2023-03-30 01:18:41.518920 INFO   ] trainer:train:361 - Test epoch: 8, time/epoch: 0:00:20.903971, threshold: 0.64, tpr: 0.91333, fpr: 0.07306, eer: 0.15973
+[2023-03-30 01:18:41.519921 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:18:41.571921 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:18:41.665921 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_8
+[2023-03-30 01:18:46.279784 INFO   ] trainer:__train_epoch:285 - Train epoch: [9/40], batch: [0/3], loss: 0.60722, accuracy: 0.95312, learning rate: 0.00093301, speed: 13.88 data/sec, eta: 0:07:22
+[2023-03-30 01:18:54.708495 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.50s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7141.92it/s]
+[2023-03-30 01:19:01.727755 INFO   ] trainer:train:361 - Test epoch: 9, time/epoch: 0:00:20.060832, threshold: 0.55, tpr: 0.92000, fpr: 0.06592, eer: 0.14592
+[2023-03-30 01:19:01.727755 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:19:01.773753 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:19:01.864754 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_9
+[2023-03-30 01:19:06.337824 INFO   ] trainer:__train_epoch:285 - Train epoch: [10/40], batch: [0/3], loss: 0.58006, accuracy: 0.92188, learning rate: 0.00091573, speed: 14.31 data/sec, eta: 0:06:55
+[2023-03-30 01:19:15.023752 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.61s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7142.04it/s]
+[2023-03-30 01:19:22.254031 INFO   ] trainer:train:361 - Test epoch: 10, time/epoch: 0:00:20.389277, threshold: 0.54, tpr: 0.90667, fpr: 0.03592, eer: 0.12925
+[2023-03-30 01:19:22.254031 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:19:22.299029 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:19:22.382028 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_10
+[2023-03-30 01:19:27.087221 INFO   ] trainer:__train_epoch:285 - Train epoch: [11/40], batch: [0/3], loss: 0.56792, accuracy: 0.92188, learning rate: 0.00089668, speed: 13.60 data/sec, eta: 0:07:03
+[2023-03-30 01:19:35.719412 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.56s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6665.67it/s]
+[2023-03-30 01:19:42.860729 INFO   ] trainer:train:361 - Test epoch: 11, time/epoch: 0:00:20.477699, threshold: 0.47, tpr: 0.92667, fpr: 0.04571, eer: 0.11905
+[2023-03-30 01:19:42.860729 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:19:42.905729 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:19:42.993728 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_11
+[2023-03-30 01:19:47.448812 INFO   ] trainer:__train_epoch:285 - Train epoch: [12/40], batch: [0/3], loss: 0.37544, accuracy: 0.96875, learning rate: 0.00087592, speed: 14.37 data/sec, eta: 0:06:27
+[2023-03-30 01:19:56.057049 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.43s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6253.99it/s]
+[2023-03-30 01:20:02.947753 INFO   ] trainer:train:361 - Test epoch: 12, time/epoch: 0:00:19.954025, threshold: 0.47, tpr: 0.92000, fpr: 0.03571, eer: 0.11571
+[2023-03-30 01:20:02.947753 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:20:02.998754 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:20:03.097754 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_12
+[2023-03-30 01:20:07.875098 INFO   ] trainer:__train_epoch:285 - Train epoch: [13/40], batch: [0/3], loss: 0.37723, accuracy: 0.95312, learning rate: 0.00085355, speed: 13.40 data/sec, eta: 0:06:41
+[2023-03-30 01:20:16.153085 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.47s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.80it/s]
+[2023-03-30 01:20:23.121358 INFO   ] trainer:train:361 - Test epoch: 13, time/epoch: 0:00:20.022604, threshold: 0.40, tpr: 0.94667, fpr: 0.06612, eer: 0.11946
+[2023-03-30 01:20:23.121358 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:20:23.211357 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_13
+[2023-03-30 01:20:28.249206 INFO   ] trainer:__train_epoch:285 - Train epoch: [14/40], batch: [0/3], loss: 0.44894, accuracy: 0.93750, learning rate: 0.00082967, speed: 12.71 data/sec, eta: 0:06:47
+[2023-03-30 01:20:36.605424 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.50s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7143.86it/s]
+[2023-03-30 01:20:43.625720 INFO   ] trainer:train:361 - Test epoch: 14, time/epoch: 0:00:20.413363, threshold: 0.40, tpr: 0.93333, fpr: 0.06122, eer: 0.12789
+[2023-03-30 01:20:43.625720 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:20:43.713718 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_14
+[2023-03-30 01:20:48.374886 INFO   ] trainer:__train_epoch:285 - Train epoch: [15/40], batch: [0/3], loss: 0.22615, accuracy: 0.98438, learning rate: 0.00080438, speed: 13.73 data/sec, eta: 0:06:03
+[2023-03-30 01:20:56.670400 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.41s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6667.36it/s]
+[2023-03-30 01:21:03.502225 INFO   ] trainer:train:361 - Test epoch: 15, time/epoch: 0:00:19.788507, threshold: 0.44, tpr: 0.90000, fpr: 0.03959, eer: 0.13959
+[2023-03-30 01:21:03.502225 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:21:03.589224 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_15
+[2023-03-30 01:21:07.838297 INFO   ] trainer:__train_epoch:285 - Train epoch: [16/40], batch: [0/3], loss: 0.20781, accuracy: 0.98438, learning rate: 0.00077779, speed: 15.07 data/sec, eta: 0:05:18
+[2023-03-30 01:21:16.451298 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.55s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7143.37it/s]
+[2023-03-30 01:21:23.580951 INFO   ] trainer:train:361 - Test epoch: 16, time/epoch: 0:00:19.990727, threshold: 0.35, tpr: 0.94667, fpr: 0.08082, eer: 0.13415
+[2023-03-30 01:21:23.581949 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:21:23.667949 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_16
+[2023-03-30 01:21:28.367970 INFO   ] trainer:__train_epoch:285 - Train epoch: [17/40], batch: [0/3], loss: 0.23862, accuracy: 0.96875, learning rate: 0.00075000, speed: 13.62 data/sec, eta: 0:05:38
+[2023-03-30 01:21:37.000167 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.44s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.61it/s]
+[2023-03-30 01:21:43.895829 INFO   ] trainer:train:361 - Test epoch: 17, time/epoch: 0:00:20.227880, threshold: 0.39, tpr: 0.92667, fpr: 0.05388, eer: 0.12721
+[2023-03-30 01:21:43.895829 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:21:43.982828 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_17
+[2023-03-30 01:21:49.107804 INFO   ] trainer:__train_epoch:285 - Train epoch: [18/40], batch: [0/3], loss: 0.23812, accuracy: 0.98438, learning rate: 0.00072114, speed: 12.49 data/sec, eta: 0:05:53
+[2023-03-30 01:21:57.394373 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.60s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.71it/s]
+[2023-03-30 01:22:04.617609 INFO   ] trainer:train:361 - Test epoch: 18, time/epoch: 0:00:20.634781, threshold: 0.36, tpr: 0.93333, fpr: 0.06224, eer: 0.12891
+[2023-03-30 01:22:04.618610 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:22:04.722615 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_18
+[2023-03-30 01:22:09.045637 INFO   ] trainer:__train_epoch:285 - Train epoch: [19/40], batch: [0/3], loss: 0.17779, accuracy: 0.98438, learning rate: 0.00069134, speed: 14.81 data/sec, eta: 0:04:45
+[2023-03-30 01:22:17.691353 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.51s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7739.85it/s]
+[2023-03-30 01:22:24.723280 INFO   ] trainer:train:361 - Test epoch: 19, time/epoch: 0:00:20.000666, threshold: 0.38, tpr: 0.93333, fpr: 0.05306, eer: 0.11973
+[2023-03-30 01:22:24.724280 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:22:24.804821 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_19
+[2023-03-30 01:22:29.383508 INFO   ] trainer:__train_epoch:285 - Train epoch: [20/40], batch: [0/3], loss: 0.10357, accuracy: 1.00000, learning rate: 0.00066072, speed: 13.98 data/sec, eta: 0:04:48
+[2023-03-30 01:22:37.880136 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.54s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6248.78it/s]
+[2023-03-30 01:22:44.983633 INFO   ] trainer:train:361 - Test epoch: 20, time/epoch: 0:00:20.177810, threshold: 0.40, tpr: 0.93333, fpr: 0.04122, eer: 0.10789
+[2023-03-30 01:22:44.983633 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:22:45.033632 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:22:45.113632 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_20
+[2023-03-30 01:22:50.134299 INFO   ] trainer:__train_epoch:285 - Train epoch: [21/40], batch: [0/3], loss: 0.14438, accuracy: 0.98438, learning rate: 0.00062941, speed: 12.75 data/sec, eta: 0:05:01
+[2023-03-30 01:22:58.179463 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.47s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.61it/s]
+[2023-03-30 01:23:05.144142 INFO   ] trainer:train:361 - Test epoch: 21, time/epoch: 0:00:20.030510, threshold: 0.43, tpr: 0.91333, fpr: 0.02776, eer: 0.11442
+[2023-03-30 01:23:05.144142 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:23:05.227762 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_21
+[2023-03-30 01:23:09.608360 INFO   ] trainer:__train_epoch:285 - Train epoch: [22/40], batch: [0/3], loss: 0.18754, accuracy: 0.98438, learning rate: 0.00059755, speed: 14.61 data/sec, eta: 0:04:09
+[2023-03-30 01:23:18.019866 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.46s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6666.51it/s]
+[2023-03-30 01:23:24.962801 INFO   ] trainer:train:361 - Test epoch: 22, time/epoch: 0:00:19.735039, threshold: 0.34, tpr: 0.94667, fpr: 0.06286, eer: 0.11619
+[2023-03-30 01:23:24.963801 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:23:25.050800 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_22
+[2023-03-30 01:23:29.719707 INFO   ] trainer:__train_epoch:285 - Train epoch: [23/40], batch: [0/3], loss: 0.09544, accuracy: 1.00000, learning rate: 0.00056526, speed: 13.71 data/sec, eta: 0:04:12
+[2023-03-30 01:23:37.738986 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.67s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.61it/s]
+[2023-03-30 01:23:45.100784 INFO   ] trainer:train:361 - Test epoch: 23, time/epoch: 0:00:20.048984, threshold: 0.34, tpr: 0.94667, fpr: 0.05653, eer: 0.10986
+[2023-03-30 01:23:45.100784 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:23:45.199783 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_23
+[2023-03-30 01:23:50.092701 INFO   ] trainer:__train_epoch:285 - Train epoch: [24/40], batch: [0/3], loss: 0.07478, accuracy: 1.00000, learning rate: 0.00053270, speed: 13.08 data/sec, eta: 0:04:09
+[2023-03-30 01:23:58.443607 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.44s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6150.46it/s]
+[2023-03-30 01:24:05.340750 INFO   ] trainer:train:361 - Test epoch: 24, time/epoch: 0:00:20.139968, threshold: 0.32, tpr: 0.94667, fpr: 0.06224, eer: 0.11558
+[2023-03-30 01:24:05.341750 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:24:05.433748 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_24
+[2023-03-30 01:24:09.997262 INFO   ] trainer:__train_epoch:285 - Train epoch: [25/40], batch: [0/3], loss: 0.14789, accuracy: 0.98438, learning rate: 0.00050000, speed: 14.03 data/sec, eta: 0:03:39
+[2023-03-30 01:24:18.657622 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.48s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.57it/s]
+[2023-03-30 01:24:25.637314 INFO   ] trainer:train:361 - Test epoch: 25, time/epoch: 0:00:20.202566, threshold: 0.32, tpr: 0.94000, fpr: 0.06143, eer: 0.12143
+[2023-03-30 01:24:25.637314 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:24:25.720314 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_25
+[2023-03-30 01:24:30.258791 INFO   ] trainer:__train_epoch:285 - Train epoch: [26/40], batch: [0/3], loss: 0.14822, accuracy: 0.96875, learning rate: 0.00046730, speed: 14.10 data/sec, eta: 0:03:24
+[2023-03-30 01:24:38.812192 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.43s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6666.73it/s]
+[2023-03-30 01:24:45.690028 INFO   ] trainer:train:361 - Test epoch: 26, time/epoch: 0:00:19.968713, threshold: 0.39, tpr: 0.90667, fpr: 0.02939, eer: 0.12272
+[2023-03-30 01:24:45.690028 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:24:45.779028 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_26
+[2023-03-30 01:24:50.619543 INFO   ] trainer:__train_epoch:285 - Train epoch: [27/40], batch: [0/3], loss: 0.08697, accuracy: 1.00000, learning rate: 0.00043474, speed: 13.23 data/sec, eta: 0:03:23
+[2023-03-30 01:24:59.105181 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.46s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6667.15it/s]
+[2023-03-30 01:25:06.059129 INFO   ] trainer:train:361 - Test epoch: 27, time/epoch: 0:00:20.279101, threshold: 0.38, tpr: 0.90667, fpr: 0.03327, eer: 0.12660
+[2023-03-30 01:25:06.062129 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:25:06.155129 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_27
+[2023-03-30 01:25:11.036685 INFO   ] trainer:__train_epoch:285 - Train epoch: [28/40], batch: [0/3], loss: 0.06857, accuracy: 1.00000, learning rate: 0.00040245, speed: 13.11 data/sec, eta: 0:03:10
+[2023-03-30 01:25:19.399628 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.56s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7142.65it/s]
+[2023-03-30 01:25:26.543545 INFO   ] trainer:train:361 - Test epoch: 28, time/epoch: 0:00:20.388416, threshold: 0.34, tpr: 0.92667, fpr: 0.04776, eer: 0.12109
+[2023-03-30 01:25:26.544546 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:25:26.636542 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_28
+[2023-03-30 01:25:31.590646 INFO   ] trainer:__train_epoch:285 - Train epoch: [29/40], batch: [0/3], loss: 0.09170, accuracy: 0.98438, learning rate: 0.00037059, speed: 12.92 data/sec, eta: 0:02:58
+[2023-03-30 01:25:39.961580 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.48s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.61it/s]
+[2023-03-30 01:25:46.942288 INFO   ] trainer:train:361 - Test epoch: 29, time/epoch: 0:00:20.304746, threshold: 0.36, tpr: 0.92000, fpr: 0.04020, eer: 0.12020
+[2023-03-30 01:25:46.943288 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:25:47.032288 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_29
+[2023-03-30 01:25:51.918880 INFO   ] trainer:__train_epoch:285 - Train epoch: [30/40], batch: [0/3], loss: 0.07000, accuracy: 1.00000, learning rate: 0.00033928, speed: 13.10 data/sec, eta: 0:02:41
+[2023-03-30 01:26:00.382203 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.57s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6668.63it/s]
+[2023-03-30 01:26:07.534734 INFO   ] trainer:train:361 - Test epoch: 30, time/epoch: 0:00:20.502446, threshold: 0.39, tpr: 0.91333, fpr: 0.02816, eer: 0.11483
+[2023-03-30 01:26:07.534734 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:26:07.629735 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_30
+[2023-03-30 01:26:11.716319 INFO   ] trainer:__train_epoch:285 - Train epoch: [31/40], batch: [0/3], loss: 0.07619, accuracy: 1.00000, learning rate: 0.00030866, speed: 15.66 data/sec, eta: 0:02:02
+[2023-03-30 01:26:20.331439 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.42s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6666.51it/s]
+[2023-03-30 01:26:27.196247 INFO   ] trainer:train:361 - Test epoch: 31, time/epoch: 0:00:19.566512, threshold: 0.39, tpr: 0.91333, fpr: 0.02714, eer: 0.11381
+[2023-03-30 01:26:27.197247 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:26:27.293247 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_31
+[2023-03-30 01:26:31.694149 INFO   ] trainer:__train_epoch:285 - Train epoch: [32/40], batch: [0/3], loss: 0.09183, accuracy: 1.00000, learning rate: 0.00027886, speed: 14.54 data/sec, eta: 0:01:58
+[2023-03-30 01:26:40.381117 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.52s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7694.14it/s]
+[2023-03-30 01:26:47.433012 INFO   ] trainer:train:361 - Test epoch: 32, time/epoch: 0:00:20.139765, threshold: 0.37, tpr: 0.92000, fpr: 0.03327, eer: 0.11327
+[2023-03-30 01:26:47.434010 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:26:47.517725 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_32
+[2023-03-30 01:26:52.162894 INFO   ] trainer:__train_epoch:285 - Train epoch: [33/40], batch: [0/3], loss: 0.04355, accuracy: 1.00000, learning rate: 0.00025000, speed: 13.78 data/sec, eta: 0:01:51
+[2023-03-30 01:27:00.713217 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.49s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6249.71it/s]
+[2023-03-30 01:27:07.711553 INFO   ] trainer:train:361 - Test epoch: 33, time/epoch: 0:00:20.193827, threshold: 0.37, tpr: 0.92000, fpr: 0.03061, eer: 0.11061
+[2023-03-30 01:27:07.711553 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:27:07.809553 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_33
+[2023-03-30 01:27:12.239542 INFO   ] trainer:__train_epoch:285 - Train epoch: [34/40], batch: [0/3], loss: 0.05501, accuracy: 1.00000, learning rate: 0.00022221, speed: 14.45 data/sec, eta: 0:01:33
+[2023-03-30 01:27:20.619514 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.43s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7143.01it/s]
+[2023-03-30 01:27:27.504438 INFO   ] trainer:train:361 - Test epoch: 34, time/epoch: 0:00:19.693885, threshold: 0.33, tpr: 0.93333, fpr: 0.04592, eer: 0.11259
+[2023-03-30 01:27:27.504438 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:27:27.591435 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_34
+[2023-03-30 01:27:32.397712 INFO   ] trainer:__train_epoch:285 - Train epoch: [35/40], batch: [0/3], loss: 0.05075, accuracy: 1.00000, learning rate: 0.00019562, speed: 13.32 data/sec, eta: 0:01:26
+[2023-03-30 01:27:40.648403 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.47s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7142.77it/s]
+[2023-03-30 01:27:47.600272 INFO   ] trainer:train:361 - Test epoch: 35, time/epoch: 0:00:20.008837, threshold: 0.35, tpr: 0.93333, fpr: 0.03776, eer: 0.10442
+[2023-03-30 01:27:47.600272 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:27:47.649272 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:27:47.736270 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_35
+[2023-03-30 01:27:52.568717 INFO   ] trainer:__train_epoch:285 - Train epoch: [36/40], batch: [0/3], loss: 0.05073, accuracy: 1.00000, learning rate: 0.00017033, speed: 13.24 data/sec, eta: 0:01:12
+[2023-03-30 01:28:00.874307 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.49s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7143.25it/s]
+[2023-03-30 01:28:07.865687 INFO   ] trainer:train:361 - Test epoch: 36, time/epoch: 0:00:20.129417, threshold: 0.33, tpr: 0.94000, fpr: 0.04531, eer: 0.10531
+[2023-03-30 01:28:07.865687 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:28:07.955208 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_36
+[2023-03-30 01:28:12.700965 INFO   ] trainer:__train_epoch:285 - Train epoch: [37/40], batch: [0/3], loss: 0.08983, accuracy: 0.98438, learning rate: 0.00014645, speed: 13.49 data/sec, eta: 0:00:56
+[2023-03-30 01:28:21.165085 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.45s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7143.01it/s]
+[2023-03-30 01:28:28.091897 INFO   ] trainer:train:361 - Test epoch: 37, time/epoch: 0:00:20.135689, threshold: 0.36, tpr: 0.92667, fpr: 0.03245, eer: 0.10578
+[2023-03-30 01:28:28.091897 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:28:28.182895 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_37
+[2023-03-30 01:28:32.823666 INFO   ] trainer:__train_epoch:285 - Train epoch: [38/40], batch: [0/3], loss: 0.04904, accuracy: 1.00000, learning rate: 0.00012408, speed: 13.79 data/sec, eta: 0:00:41
+[2023-03-30 01:28:41.279745 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.42s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6665.67it/s]
+[2023-03-30 01:28:48.132811 INFO   ] trainer:train:361 - Test epoch: 38, time/epoch: 0:00:19.948917, threshold: 0.35, tpr: 0.93333, fpr: 0.03714, eer: 0.10381
+[2023-03-30 01:28:48.133809 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:28:48.178809 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:28:48.268809 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_38
+[2023-03-30 01:28:52.824866 INFO   ] trainer:__train_epoch:285 - Train epoch: [39/40], batch: [0/3], loss: 0.04178, accuracy: 1.00000, learning rate: 0.00010332, speed: 14.05 data/sec, eta: 0:00:27
+[2023-03-30 01:29:00.992511 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.51s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 6666.73it/s]
+[2023-03-30 01:29:08.032517 INFO   ] trainer:train:361 - Test epoch: 39, time/epoch: 0:00:19.761708, threshold: 0.36, tpr: 0.93333, fpr: 0.03102, eer: 0.09769
+[2023-03-30 01:29:08.032517 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:29:08.086516 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\best_model
+[2023-03-30 01:29:08.172516 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_39
+[2023-03-30 01:29:13.264517 INFO   ] trainer:__train_epoch:285 - Train epoch: [40/40], batch: [0/3], loss: 0.05576, accuracy: 1.00000, learning rate: 0.00008427, speed: 12.57 data/sec, eta: 0:00:15
+[2023-03-30 01:29:21.468912 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.59s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7141.92it/s]
+[2023-03-30 01:29:28.665456 INFO   ] trainer:train:361 - Test epoch: 40, time/epoch: 0:00:20.491940, threshold: 0.35, tpr: 0.93333, fpr: 0.03551, eer: 0.10218
+[2023-03-30 01:29:28.665456 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-30 01:29:28.755455 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/TDNN-SAP/TDNN_MFCC\epoch_40
+
+(base) C:\Users\lkwlv\Desktop\VoiceprintRecognition-Pytorch-develop>

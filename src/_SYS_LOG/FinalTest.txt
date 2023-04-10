@@ -1,0 +1,179 @@
+
+(base) C:\Users\lkwlv>cd C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch
+
+(base) C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch>python .git
+C:\Users\lkwlv\anaconda3\python.exe: can't find '__main__' module in 'C:\\Users\\lkwlv\\Desktop\\VoiceDevelop\\VoiceprintRecognition_Pytorch\\.git'
+
+(base) C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch>python train.py
+C:\Users\lkwlv\anaconda3\lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+[2023-03-28 17:27:04.341089 INFO   ] utils:print_arguments:13 - ----------- 额外配置参数 -----------
+[2023-03-28 17:27:04.341089 INFO   ] utils:print_arguments:15 - augment_conf_path: configs/augmentation.json
+[2023-03-28 17:27:04.341089 INFO   ] utils:print_arguments:15 - configs: configs/ecapa_tdnn.yml
+[2023-03-28 17:27:04.341089 INFO   ] utils:print_arguments:15 - local_rank: 0
+[2023-03-28 17:27:04.341089 INFO   ] utils:print_arguments:15 - pretrained_model: None
+[2023-03-28 17:27:04.342089 INFO   ] utils:print_arguments:15 - resume_model: None
+[2023-03-28 17:27:04.342089 INFO   ] utils:print_arguments:15 - save_model_path: models/EcapaTdnn_1873/
+[2023-03-28 17:27:04.342089 INFO   ] utils:print_arguments:15 - use_gpu: True
+[2023-03-28 17:27:04.342089 INFO   ] utils:print_arguments:16 - ------------------------------------------------
+[2023-03-28 17:27:04.378089 INFO   ] utils:print_arguments:18 - ----------- 配置文件参数 -----------
+[2023-03-28 17:27:04.378089 INFO   ] utils:print_arguments:21 - dataset_conf:
+[2023-03-28 17:27:04.378089 INFO   ] utils:print_arguments:28 -         batch_size: 256
+[2023-03-28 17:27:04.379089 INFO   ] utils:print_arguments:28 -         chunk_duration: 3
+[2023-03-28 17:27:04.379089 INFO   ] utils:print_arguments:28 -         do_vad: False
+[2023-03-28 17:27:04.379089 INFO   ] utils:print_arguments:28 -         min_duration: 0.5
+[2023-03-28 17:27:04.379089 INFO   ] utils:print_arguments:28 -         num_speakers: 1873
+[2023-03-28 17:27:04.379089 INFO   ] utils:print_arguments:28 -         num_workers: 0
+[2023-03-28 17:27:04.379089 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-28 17:27:04.379089 INFO   ] utils:print_arguments:28 -         target_dB: -20
+[2023-03-28 17:27:04.380089 INFO   ] utils:print_arguments:28 -         test_list: dataset/test_list.txt
+[2023-03-28 17:27:04.380089 INFO   ] utils:print_arguments:28 -         train_list: dataset/train_list.txt
+[2023-03-28 17:27:04.381091 INFO   ] utils:print_arguments:28 -         use_dB_normalization: True
+[2023-03-28 17:27:04.381091 INFO   ] utils:print_arguments:21 - feature_conf:
+[2023-03-28 17:27:04.381091 INFO   ] utils:print_arguments:28 -         f_max: 14000.0
+[2023-03-28 17:27:04.382090 INFO   ] utils:print_arguments:28 -         f_min: 50.0
+[2023-03-28 17:27:04.382090 INFO   ] utils:print_arguments:28 -         hop_length: 320
+[2023-03-28 17:27:04.383091 INFO   ] utils:print_arguments:28 -         n_fft: 1024
+[2023-03-28 17:27:04.383091 INFO   ] utils:print_arguments:28 -         n_mels: 64
+[2023-03-28 17:27:04.383091 INFO   ] utils:print_arguments:28 -         n_mfcc: 64
+[2023-03-28 17:27:04.384090 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-28 17:27:04.384090 INFO   ] utils:print_arguments:28 -         win_length: 1024
+[2023-03-28 17:27:04.385090 INFO   ] utils:print_arguments:21 - model_conf:
+[2023-03-28 17:27:04.385090 INFO   ] utils:print_arguments:28 -         channels: 512
+[2023-03-28 17:27:04.385090 INFO   ] utils:print_arguments:28 -         embd_dim: 192
+[2023-03-28 17:27:04.386091 INFO   ] utils:print_arguments:28 -         pooling_type: ASP
+[2023-03-28 17:27:04.386091 INFO   ] utils:print_arguments:21 - optimizer_conf:
+[2023-03-28 17:27:04.386091 INFO   ] utils:print_arguments:28 -         learning_rate: 0.001
+[2023-03-28 17:27:04.387090 INFO   ] utils:print_arguments:28 -         momentum: 0.9
+[2023-03-28 17:27:04.387090 INFO   ] utils:print_arguments:28 -         optimizer: AdamW
+[2023-03-28 17:27:04.388090 INFO   ] utils:print_arguments:28 -         weight_decay: 1e-6
+[2023-03-28 17:27:04.388090 INFO   ] utils:print_arguments:21 - preprocess_conf:
+[2023-03-28 17:27:04.388090 INFO   ] utils:print_arguments:28 -         feature_method: MFCC
+[2023-03-28 17:27:04.389090 INFO   ] utils:print_arguments:21 - train_conf:
+[2023-03-28 17:27:04.389090 INFO   ] utils:print_arguments:28 -         log_interval: 100
+[2023-03-28 17:27:04.390090 INFO   ] utils:print_arguments:28 -         max_epoch: 40
+[2023-03-28 17:27:04.390090 INFO   ] utils:print_arguments:30 - use_loss: AAMLoss
+[2023-03-28 17:27:04.390090 INFO   ] utils:print_arguments:30 - use_model: EcapaTdnn
+[2023-03-28 17:27:04.391091 INFO   ] utils:print_arguments:31 - ------------------------------------------------
+C:\Users\lkwlv\anaconda3\lib\site-packages\torchaudio\functional\functional.py:571: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (64) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+[2023-03-28 17:27:04.501088 WARNING] trainer:__init__:66 - Windows系统不支持多线程读取数据，已自动关闭！
+[2023-03-28 17:27:04.507088 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'noise', 'aug_type': 'audio', 'params': {'min_snr_dB': 10, 'max_snr_dB': 50, 'repetition': 2, 'noise_dir': 'dataset/noise/'}, 'prob': 0.0}
+[2023-03-28 17:27:04.508088 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'resample', 'aug_type': 'audio', 'params': {'new_sample_rate': [8000, 32000, 44100, 48000]}, 'prob': 0.0}
+[2023-03-28 17:27:04.508088 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'speed', 'aug_type': 'audio', 'params': {'min_speed_rate': 0.9, 'max_speed_rate': 1.1, 'num_rates': 3}, 'prob': 0.5}
+[2023-03-28 17:27:04.509090 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'shift', 'aug_type': 'audio', 'params': {'min_shift_ms': -5, 'max_shift_ms': 5}, 'prob': 0.0}
+[2023-03-28 17:27:04.509090 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'volume', 'aug_type': 'audio', 'params': {'min_gain_dBFS': -15, 'max_gain_dBFS': 15}, 'prob': 0.0}
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+SpeakerIdetification                          [1, 1873]                 359,616
+├─EcapaTdnn: 1-1                              [1, 192]                  --
+│    └─Conv1dReluBn: 2-1                      [1, 512, 98]              --
+│    │    └─Conv1d: 3-1                       [1, 512, 98]              163,840
+│    │    └─BatchNorm1d: 3-2                  [1, 512, 98]              1,024
+│    └─Sequential: 2-2                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-3                 [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-4             [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-5                 [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-6                   [1, 512, 98]              262,912
+│    └─Sequential: 2-3                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-7                 [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-8             [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-9                 [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-10                  [1, 512, 98]              262,912
+│    └─Sequential: 2-4                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-11                [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-12            [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-13                [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-14                  [1, 512, 98]              262,912
+│    └─Conv1d: 2-5                            [1, 1536, 98]             2,360,832
+│    └─AttentiveStatsPool: 2-6                [1, 3072]                 --
+│    │    └─Conv1d: 3-15                      [1, 128, 98]              196,736
+│    │    └─Conv1d: 3-16                      [1, 1536, 98]             198,144
+│    └─BatchNorm1d: 2-7                       [1, 3072]                 6,144
+│    └─Linear: 2-8                            [1, 192]                  590,016
+│    └─BatchNorm1d: 2-9                       [1, 192]                  384
+├─Dropout: 1-2                                [1, 192]                  --
+===============================================================================================
+Total params: 6,505,216
+Trainable params: 6,505,216
+Non-trainable params: 0
+Total mult-adds (M): 466.94
+===============================================================================================
+Input size (MB): 0.03
+Forward/backward pass size (MB): 10.28
+Params size (MB): 24.58
+Estimated Total Size (MB): 34.89
+===============================================================================================
+[2023-03-28 17:27:06.433089 INFO   ] trainer:train:337 - 训练数据：18127
+[2023-03-28 17:27:06.563099 INFO   ] trainer:__load_checkpoint:210 - 成功恢复模型参数和优化方法参数：models/EcapaTdnn_1873/EcapaTdnn_MFCC\last_model
+[2023-03-28 17:27:24.768938 INFO   ] trainer:__train_epoch:285 - Train epoch: [33/40], batch: [0/71], loss: 0.11478, accuracy: 1.00000, learning rate: 0.00006971, speed: 14.06 data/sec, eta: 2:52:19
+C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch\mvector\data_utils\audio.py:511: RuntimeWarning: divide by zero encountered in log10
+  return 10 * np.log10(mean_square)
+[2023-03-28 17:46:59.279607 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:33<00:00, 17.90s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:23<00:00, 235.25it/s]
+[2023-03-28 17:53:59.919741 INFO   ] trainer:train:361 - Test epoch: 33, time/epoch: 0:26:53.354641, threshold: 0.24, tpr: 0.96716, fpr: 0.02331, eer: 0.05615
+[2023-03-28 17:53:59.920744 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 17:54:00.060743 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\best_model
+[2023-03-28 17:54:00.255743 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_33
+[2023-03-28 17:54:16.167744 INFO   ] trainer:__train_epoch:285 - Train epoch: [34/40], batch: [0/71], loss: 0.07304, accuracy: 1.00000, learning rate: 0.00006250, speed: 16.09 data/sec, eta: 2:11:47
+[2023-03-28 18:13:04.123660 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:12<00:00, 16.91s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:24<00:00, 231.12it/s]
+[2023-03-28 18:19:43.460011 INFO   ] trainer:train:361 - Test epoch: 34, time/epoch: 0:25:43.203268, threshold: 0.25, tpr: 0.96316, fpr: 0.01916, eer: 0.05600
+[2023-03-28 18:19:43.461012 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 18:19:43.615016 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\best_model
+[2023-03-28 18:19:43.814015 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_34
+[2023-03-28 18:19:59.472016 INFO   ] trainer:__train_epoch:285 - Train epoch: [35/40], batch: [0/71], loss: 0.09104, accuracy: 1.00000, learning rate: 0.00005555, speed: 16.35 data/sec, eta: 1:51:09
+[2023-03-28 18:38:39.487968 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:08<00:00, 16.73s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:23<00:00, 234.43it/s]
+[2023-03-28 18:45:14.522783 INFO   ] trainer:train:361 - Test epoch: 35, time/epoch: 0:25:30.708767, threshold: 0.24, tpr: 0.96654, fpr: 0.02295, eer: 0.05641
+[2023-03-28 18:45:14.523783 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 18:45:14.737785 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_35
+[2023-03-28 18:45:30.681787 INFO   ] trainer:__train_epoch:285 - Train epoch: [36/40], batch: [0/71], loss: 0.08156, accuracy: 1.00000, learning rate: 0.00004890, speed: 16.06 data/sec, eta: 1:34:20
+[2023-03-28 19:05:21.370421 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:38<00:00, 18.09s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:29<00:00, 193.41it/s]
+[2023-03-28 19:12:31.863406 INFO   ] trainer:train:361 - Test epoch: 36, time/epoch: 0:27:17.125621, threshold: 0.24, tpr: 0.96654, fpr: 0.02289, eer: 0.05635
+[2023-03-28 19:12:31.864407 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 19:12:32.061336 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_36
+[2023-03-28 19:12:49.105702 INFO   ] trainer:__train_epoch:285 - Train epoch: [37/40], batch: [0/71], loss: 0.09929, accuracy: 1.00000, learning rate: 0.00004258, speed: 15.02 data/sec, eta: 1:20:40
+[2023-03-28 19:31:56.187422 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:16<00:00, 17.11s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:26<00:00, 209.68it/s]
+[2023-03-28 19:38:42.628447 INFO   ] trainer:train:361 - Test epoch: 37, time/epoch: 0:26:10.567111, threshold: 0.24, tpr: 0.96645, fpr: 0.02279, eer: 0.05634
+[2023-03-28 19:38:42.629448 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 19:38:42.847448 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_37
+[2023-03-28 19:39:00.282397 INFO   ] trainer:__train_epoch:285 - Train epoch: [38/40], batch: [0/71], loss: 0.08464, accuracy: 1.00000, learning rate: 0.00003661, speed: 14.68 data/sec, eta: 1:01:53
+[2023-03-28 19:57:42.069297 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:14<00:00, 17.02s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:26<00:00, 214.51it/s]
+[2023-03-28 20:04:25.989516 INFO   ] trainer:train:361 - Test epoch: 38, time/epoch: 0:25:43.141070, threshold: 0.24, tpr: 0.96583, fpr: 0.02263, eer: 0.05680
+[2023-03-28 20:04:25.990514 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 20:04:26.192516 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_38
+[2023-03-28 20:04:42.782997 INFO   ] trainer:__train_epoch:285 - Train epoch: [39/40], batch: [0/71], loss: 0.06899, accuracy: 1.00000, learning rate: 0.00003102, speed: 15.43 data/sec, eta: 0:39:15
+[2023-03-28 20:23:25.209039 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:14<00:00, 17.01s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:24<00:00, 227.19it/s]
+[2023-03-28 20:30:07.212228 INFO   ] trainer:train:361 - Test epoch: 39, time/epoch: 0:25:41.019712, threshold: 0.24, tpr: 0.96574, fpr: 0.02262, eer: 0.05688
+[2023-03-28 20:30:07.212228 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 20:30:07.414227 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_39
+[2023-03-28 20:30:23.316242 INFO   ] trainer:__train_epoch:285 - Train epoch: [40/40], batch: [0/71], loss: 0.07626, accuracy: 1.00000, learning rate: 0.00002583, speed: 16.10 data/sec, eta: 0:18:48
+[2023-03-28 20:49:07.621371 INFO   ] trainer:train:359 - ======================================================================
+100%|██████████████████████████████████████████████████████████████████████████████████| 22/22 [06:38<00:00, 18.10s/it]
+开始两两对比音频特征...
+100%|█████████████████████████████████████████████████████████████████████████████| 5619/5619 [00:28<00:00, 196.62it/s]
+[2023-03-28 20:56:17.617998 INFO   ] trainer:train:361 - Test epoch: 40, time/epoch: 0:26:10.202769, threshold: 0.25, tpr: 0.96218, fpr: 0.01880, eer: 0.05662
+[2023-03-28 20:56:17.617998 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 20:56:17.830998 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_1873/EcapaTdnn_MFCC\epoch_40
+
+(base) C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch>

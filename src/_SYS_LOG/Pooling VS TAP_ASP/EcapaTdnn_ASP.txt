@@ -1,0 +1,552 @@
+(base) C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch>python train.py
+C:\Users\lkwlv\anaconda3\lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+[2023-03-28 01:09:33.790675 INFO   ] utils:print_arguments:13 - ----------- 额外配置参数 -----------
+[2023-03-28 01:09:33.790675 INFO   ] utils:print_arguments:15 - augment_conf_path: configs/augmentation.json
+[2023-03-28 01:09:33.793675 INFO   ] utils:print_arguments:15 - configs: configs/ecapa_tdnn.yml
+[2023-03-28 01:09:33.795675 INFO   ] utils:print_arguments:15 - local_rank: 0
+[2023-03-28 01:09:33.796676 INFO   ] utils:print_arguments:15 - pretrained_model: None
+[2023-03-28 01:09:33.798679 INFO   ] utils:print_arguments:15 - resume_model: None
+[2023-03-28 01:09:33.800675 INFO   ] utils:print_arguments:15 - save_model_path: models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/
+[2023-03-28 01:09:33.801676 INFO   ] utils:print_arguments:15 - use_gpu: True
+[2023-03-28 01:09:33.802676 INFO   ] utils:print_arguments:16 - ------------------------------------------------
+[2023-03-28 01:09:33.828675 INFO   ] utils:print_arguments:18 - ----------- 配置文件参数 -----------
+[2023-03-28 01:09:33.829674 INFO   ] utils:print_arguments:21 - dataset_conf:
+[2023-03-28 01:09:33.829674 INFO   ] utils:print_arguments:28 -         batch_size: 128
+[2023-03-28 01:09:33.830676 INFO   ] utils:print_arguments:28 -         chunk_duration: 3
+[2023-03-28 01:09:33.830676 INFO   ] utils:print_arguments:28 -         do_vad: False
+[2023-03-28 01:09:33.831675 INFO   ] utils:print_arguments:28 -         min_duration: 0.5
+[2023-03-28 01:09:33.832675 INFO   ] utils:print_arguments:28 -         num_speakers: 50
+[2023-03-28 01:09:33.832675 INFO   ] utils:print_arguments:28 -         num_workers: 0
+[2023-03-28 01:09:33.833679 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-28 01:09:33.834678 INFO   ] utils:print_arguments:28 -         target_dB: -20
+[2023-03-28 01:09:33.834678 INFO   ] utils:print_arguments:28 -         test_list: dataset/test_list.txt
+[2023-03-28 01:09:33.835676 INFO   ] utils:print_arguments:28 -         train_list: dataset/train_list.txt
+[2023-03-28 01:09:33.835676 INFO   ] utils:print_arguments:28 -         use_dB_normalization: True
+[2023-03-28 01:09:33.836675 INFO   ] utils:print_arguments:21 - feature_conf:
+[2023-03-28 01:09:33.838676 INFO   ] utils:print_arguments:28 -         f_max: 14000.0
+[2023-03-28 01:09:33.839677 INFO   ] utils:print_arguments:28 -         f_min: 50.0
+[2023-03-28 01:09:33.839677 INFO   ] utils:print_arguments:28 -         hop_length: 320
+[2023-03-28 01:09:33.840907 INFO   ] utils:print_arguments:28 -         n_fft: 1024
+[2023-03-28 01:09:33.841675 INFO   ] utils:print_arguments:28 -         n_mels: 64
+[2023-03-28 01:09:33.842299 INFO   ] utils:print_arguments:28 -         n_mfcc: 64
+[2023-03-28 01:09:33.843283 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-28 01:09:33.843283 INFO   ] utils:print_arguments:28 -         win_length: 1024
+[2023-03-28 01:09:33.844285 INFO   ] utils:print_arguments:21 - model_conf:
+[2023-03-28 01:09:33.844285 INFO   ] utils:print_arguments:28 -         channels: 512
+[2023-03-28 01:09:33.845283 INFO   ] utils:print_arguments:28 -         embd_dim: 192
+[2023-03-28 01:09:33.845283 INFO   ] utils:print_arguments:28 -         pooling_type: ASP
+[2023-03-28 01:09:33.846287 INFO   ] utils:print_arguments:21 - optimizer_conf:
+[2023-03-28 01:09:33.846287 INFO   ] utils:print_arguments:28 -         learning_rate: 0.001
+[2023-03-28 01:09:33.847285 INFO   ] utils:print_arguments:28 -         momentum: 0.9
+[2023-03-28 01:09:33.848285 INFO   ] utils:print_arguments:28 -         optimizer: AdamW
+[2023-03-28 01:09:33.848285 INFO   ] utils:print_arguments:28 -         weight_decay: 1e-6
+[2023-03-28 01:09:33.849284 INFO   ] utils:print_arguments:21 - preprocess_conf:
+[2023-03-28 01:09:33.849284 INFO   ] utils:print_arguments:28 -         feature_method: MFCC
+[2023-03-28 01:09:33.850284 INFO   ] utils:print_arguments:21 - train_conf:
+[2023-03-28 01:09:33.850284 INFO   ] utils:print_arguments:28 -         log_interval: 100
+[2023-03-28 01:09:33.851284 INFO   ] utils:print_arguments:28 -         max_epoch: 40
+[2023-03-28 01:09:33.851284 INFO   ] utils:print_arguments:30 - use_loss: CELoss
+[2023-03-28 01:09:33.852284 INFO   ] utils:print_arguments:30 - use_model: EcapaTdnn
+[2023-03-28 01:09:33.857285 INFO   ] utils:print_arguments:31 - ------------------------------------------------
+C:\Users\lkwlv\anaconda3\lib\site-packages\torchaudio\functional\functional.py:571: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (64) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+[2023-03-28 01:09:33.980801 WARNING] trainer:__init__:66 - Windows系统不支持多线程读取数据，已自动关闭！
+[2023-03-28 01:09:33.983802 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'noise', 'aug_type': 'audio', 'params': {'min_snr_dB': 10, 'max_snr_dB': 50, 'repetition': 2, 'noise_dir': 'dataset/noise/'}, 'prob': 0.0}
+[2023-03-28 01:09:33.983802 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'resample', 'aug_type': 'audio', 'params': {'new_sample_rate': [8000, 32000, 44100, 48000]}, 'prob': 0.0}
+[2023-03-28 01:09:33.984801 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'speed', 'aug_type': 'audio', 'params': {'min_speed_rate': 0.9, 'max_speed_rate': 1.1, 'num_rates': 3}, 'prob': 0.5}
+[2023-03-28 01:09:33.986802 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'shift', 'aug_type': 'audio', 'params': {'min_shift_ms': -5, 'max_shift_ms': 5}, 'prob': 0.0}
+[2023-03-28 01:09:33.987802 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'volume', 'aug_type': 'audio', 'params': {'min_gain_dBFS': -15, 'max_gain_dBFS': 15}, 'prob': 0.0}
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+SpeakerIdetification                          [1, 50]                   --
+├─EcapaTdnn: 1-1                              [1, 192]                  --
+│    └─Conv1dReluBn: 2-1                      [1, 512, 98]              --
+│    │    └─Conv1d: 3-1                       [1, 512, 98]              163,840
+│    │    └─BatchNorm1d: 3-2                  [1, 512, 98]              1,024
+│    └─Sequential: 2-2                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-3                 [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-4             [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-5                 [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-6                   [1, 512, 98]              262,912
+│    └─Sequential: 2-3                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-7                 [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-8             [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-9                 [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-10                  [1, 512, 98]              262,912
+│    └─Sequential: 2-4                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-11                [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-12            [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-13                [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-14                  [1, 512, 98]              262,912
+│    └─Conv1d: 2-5                            [1, 1536, 98]             2,360,832
+│    └─AttentiveStatsPool: 2-6                [1, 3072]                 --
+│    │    └─Conv1d: 3-15                      [1, 128, 98]              196,736
+│    │    └─Conv1d: 3-16                      [1, 1536, 98]             198,144
+│    └─BatchNorm1d: 2-7                       [1, 3072]                 6,144
+│    └─Linear: 2-8                            [1, 192]                  590,016
+│    └─BatchNorm1d: 2-9                       [1, 192]                  384
+├─Dropout: 1-2                                [1, 192]                  --
+├─Linear: 1-3                                 [1, 50]                   9,650
+===============================================================================================
+Total params: 6,155,250
+Trainable params: 6,155,250
+Non-trainable params: 0
+Total mult-adds (M): 466.95
+===============================================================================================
+Input size (MB): 0.03
+Forward/backward pass size (MB): 10.28
+Params size (MB): 24.62
+Estimated Total Size (MB): 34.93
+===============================================================================================
+[2023-03-28 01:09:36.090656 INFO   ] trainer:train:337 - 训练数据：187
+[2023-03-28 01:09:36.243881 INFO   ] trainer:__load_checkpoint:210 - 成功恢复模型参数和优化方法参数：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\last_model
+
+(base) C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch>cd C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch
+
+(base) C:\Users\lkwlv\Desktop\VoiceDevelop\VoiceprintRecognition_Pytorch>python train.py
+C:\Users\lkwlv\anaconda3\lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+[2023-03-28 01:16:29.384444 INFO   ] utils:print_arguments:13 - ----------- 额外配置参数 -----------
+[2023-03-28 01:16:29.385445 INFO   ] utils:print_arguments:15 - augment_conf_path: configs/augmentation.json
+[2023-03-28 01:16:29.385445 INFO   ] utils:print_arguments:15 - configs: configs/ecapa_tdnn.yml
+[2023-03-28 01:16:29.386446 INFO   ] utils:print_arguments:15 - local_rank: 0
+[2023-03-28 01:16:29.386446 INFO   ] utils:print_arguments:15 - pretrained_model: None
+[2023-03-28 01:16:29.387445 INFO   ] utils:print_arguments:15 - resume_model: None
+[2023-03-28 01:16:29.388445 INFO   ] utils:print_arguments:15 - save_model_path: models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/
+[2023-03-28 01:16:29.388445 INFO   ] utils:print_arguments:15 - use_gpu: True
+[2023-03-28 01:16:29.389445 INFO   ] utils:print_arguments:16 - ------------------------------------------------
+[2023-03-28 01:16:29.417445 INFO   ] utils:print_arguments:18 - ----------- 配置文件参数 -----------
+[2023-03-28 01:16:29.418446 INFO   ] utils:print_arguments:21 - dataset_conf:
+[2023-03-28 01:16:29.420444 INFO   ] utils:print_arguments:28 -         batch_size: 128
+[2023-03-28 01:16:29.421447 INFO   ] utils:print_arguments:28 -         chunk_duration: 3
+[2023-03-28 01:16:29.421447 INFO   ] utils:print_arguments:28 -         do_vad: False
+[2023-03-28 01:16:29.422448 INFO   ] utils:print_arguments:28 -         min_duration: 0.5
+[2023-03-28 01:16:29.423445 INFO   ] utils:print_arguments:28 -         num_speakers: 50
+[2023-03-28 01:16:29.423445 INFO   ] utils:print_arguments:28 -         num_workers: 0
+[2023-03-28 01:16:29.424445 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-28 01:16:29.424445 INFO   ] utils:print_arguments:28 -         target_dB: -20
+[2023-03-28 01:16:29.425445 INFO   ] utils:print_arguments:28 -         test_list: dataset/test_list.txt
+[2023-03-28 01:16:29.426445 INFO   ] utils:print_arguments:28 -         train_list: dataset/train_list.txt
+[2023-03-28 01:16:29.427446 INFO   ] utils:print_arguments:28 -         use_dB_normalization: True
+[2023-03-28 01:16:29.428443 INFO   ] utils:print_arguments:21 - feature_conf:
+[2023-03-28 01:16:29.429446 INFO   ] utils:print_arguments:28 -         f_max: 14000.0
+[2023-03-28 01:16:29.429446 INFO   ] utils:print_arguments:28 -         f_min: 50.0
+[2023-03-28 01:16:29.430447 INFO   ] utils:print_arguments:28 -         hop_length: 320
+[2023-03-28 01:16:29.431445 INFO   ] utils:print_arguments:28 -         n_fft: 1024
+[2023-03-28 01:16:29.431445 INFO   ] utils:print_arguments:28 -         n_mels: 64
+[2023-03-28 01:16:29.432445 INFO   ] utils:print_arguments:28 -         n_mfcc: 64
+[2023-03-28 01:16:29.433445 INFO   ] utils:print_arguments:28 -         sample_rate: 16000
+[2023-03-28 01:16:29.434446 INFO   ] utils:print_arguments:28 -         win_length: 1024
+[2023-03-28 01:16:29.434446 INFO   ] utils:print_arguments:21 - model_conf:
+[2023-03-28 01:16:29.435445 INFO   ] utils:print_arguments:28 -         channels: 512
+[2023-03-28 01:16:29.435445 INFO   ] utils:print_arguments:28 -         embd_dim: 192
+[2023-03-28 01:16:29.436446 INFO   ] utils:print_arguments:28 -         pooling_type: ASP
+[2023-03-28 01:16:29.437446 INFO   ] utils:print_arguments:21 - optimizer_conf:
+[2023-03-28 01:16:29.438446 INFO   ] utils:print_arguments:28 -         learning_rate: 0.001
+[2023-03-28 01:16:29.438446 INFO   ] utils:print_arguments:28 -         momentum: 0.9
+[2023-03-28 01:16:29.439445 INFO   ] utils:print_arguments:28 -         optimizer: AdamW
+[2023-03-28 01:16:29.440446 INFO   ] utils:print_arguments:28 -         weight_decay: 1e-6
+[2023-03-28 01:16:29.441446 INFO   ] utils:print_arguments:21 - preprocess_conf:
+[2023-03-28 01:16:29.448198 INFO   ] utils:print_arguments:28 -         feature_method: MFCC
+[2023-03-28 01:16:29.449222 INFO   ] utils:print_arguments:21 - train_conf:
+[2023-03-28 01:16:29.451217 INFO   ] utils:print_arguments:28 -         log_interval: 100
+[2023-03-28 01:16:29.451217 INFO   ] utils:print_arguments:28 -         max_epoch: 40
+[2023-03-28 01:16:29.452215 INFO   ] utils:print_arguments:30 - use_loss: CELoss
+[2023-03-28 01:16:29.452215 INFO   ] utils:print_arguments:30 - use_model: EcapaTdnn
+[2023-03-28 01:16:29.453214 INFO   ] utils:print_arguments:31 - ------------------------------------------------
+C:\Users\lkwlv\anaconda3\lib\site-packages\torchaudio\functional\functional.py:571: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (64) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+[2023-03-28 01:16:29.604550 WARNING] trainer:__init__:66 - Windows系统不支持多线程读取数据，已自动关闭！
+[2023-03-28 01:16:29.607550 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'noise', 'aug_type': 'audio', 'params': {'min_snr_dB': 10, 'max_snr_dB': 50, 'repetition': 2, 'noise_dir': 'dataset/noise/'}, 'prob': 0.0}
+[2023-03-28 01:16:29.607550 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'resample', 'aug_type': 'audio', 'params': {'new_sample_rate': [8000, 32000, 44100, 48000]}, 'prob': 0.0}
+[2023-03-28 01:16:29.608552 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'speed', 'aug_type': 'audio', 'params': {'min_speed_rate': 0.9, 'max_speed_rate': 1.1, 'num_rates': 3}, 'prob': 0.5}
+[2023-03-28 01:16:29.609552 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'shift', 'aug_type': 'audio', 'params': {'min_shift_ms': -5, 'max_shift_ms': 5}, 'prob': 0.0}
+[2023-03-28 01:16:29.609552 INFO   ] augmentation:_parse_pipeline_from:94 - 数据增强配置：{'type': 'volume', 'aug_type': 'audio', 'params': {'min_gain_dBFS': -15, 'max_gain_dBFS': 15}, 'prob': 0.0}
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+SpeakerIdetification                          [1, 50]                   --
+├─EcapaTdnn: 1-1                              [1, 192]                  --
+│    └─Conv1dReluBn: 2-1                      [1, 512, 98]              --
+│    │    └─Conv1d: 3-1                       [1, 512, 98]              163,840
+│    │    └─BatchNorm1d: 3-2                  [1, 512, 98]              1,024
+│    └─Sequential: 2-2                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-3                 [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-4             [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-5                 [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-6                   [1, 512, 98]              262,912
+│    └─Sequential: 2-3                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-7                 [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-8             [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-9                 [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-10                  [1, 512, 98]              262,912
+│    └─Sequential: 2-4                        [1, 512, 98]              --
+│    │    └─Conv1dReluBn: 3-11                [1, 512, 98]              263,168
+│    │    └─Res2Conv1dReluBn: 3-12            [1, 512, 98]              86,912
+│    │    └─Conv1dReluBn: 3-13                [1, 512, 98]              263,168
+│    │    └─SE_Connect: 3-14                  [1, 512, 98]              262,912
+│    └─Conv1d: 2-5                            [1, 1536, 98]             2,360,832
+│    └─AttentiveStatsPool: 2-6                [1, 3072]                 --
+│    │    └─Conv1d: 3-15                      [1, 128, 98]              196,736
+│    │    └─Conv1d: 3-16                      [1, 1536, 98]             198,144
+│    └─BatchNorm1d: 2-7                       [1, 3072]                 6,144
+│    └─Linear: 2-8                            [1, 192]                  590,016
+│    └─BatchNorm1d: 2-9                       [1, 192]                  384
+├─Dropout: 1-2                                [1, 192]                  --
+├─Linear: 1-3                                 [1, 50]                   9,650
+===============================================================================================
+Total params: 6,155,250
+Trainable params: 6,155,250
+Non-trainable params: 0
+Total mult-adds (M): 466.95
+===============================================================================================
+Input size (MB): 0.03
+Forward/backward pass size (MB): 10.28
+Params size (MB): 24.62
+Estimated Total Size (MB): 34.93
+===============================================================================================
+[2023-03-28 01:16:31.629553 INFO   ] trainer:train:337 - 训练数据：187
+[2023-03-28 01:16:41.800380 INFO   ] trainer:__train_epoch:285 - Train epoch: [1/40], batch: [0/2], loss: 4.11374, accuracy: 0.02344, learning rate: 0.00100000, speed: 12.59 data/sec, eta: 0:13:33
+[2023-03-28 01:16:45.609380 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.84s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.43it/s]
+[2023-03-28 01:16:52.473380 INFO   ] trainer:train:361 - Test epoch: 1, time/epoch: 0:00:20.842827, threshold: 0.96, tpr: 0.82000, fpr: 0.08776, eer: 0.26776
+[2023-03-28 01:16:52.473380 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:16:52.584385 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:16:52.745381 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_1
+[2023-03-28 01:17:01.398379 INFO   ] trainer:__train_epoch:285 - Train epoch: [2/40], batch: [0/2], loss: 2.06101, accuracy: 0.60938, learning rate: 0.00099893, speed: 14.79 data/sec, eta: 0:11:14
+[2023-03-28 01:17:05.325379 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.84s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.02it/s]
+[2023-03-28 01:17:12.184379 INFO   ] trainer:train:361 - Test epoch: 2, time/epoch: 0:00:19.437999, threshold: 0.89, tpr: 0.87333, fpr: 0.08327, eer: 0.20993
+[2023-03-28 01:17:12.184379 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:17:12.296382 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:17:12.464380 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_2
+[2023-03-28 01:17:21.131380 INFO   ] trainer:__train_epoch:285 - Train epoch: [3/40], batch: [0/2], loss: 1.48312, accuracy: 0.77344, learning rate: 0.00099572, speed: 14.77 data/sec, eta: 0:10:58
+[2023-03-28 01:17:25.016380 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.67s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.99it/s]
+[2023-03-28 01:17:31.701381 INFO   ] trainer:train:361 - Test epoch: 3, time/epoch: 0:00:19.237001, threshold: 0.82, tpr: 0.86000, fpr: 0.06184, eer: 0.20184
+[2023-03-28 01:17:31.701381 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:17:31.810379 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:17:31.973381 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_3
+[2023-03-28 01:17:40.433380 INFO   ] trainer:__train_epoch:285 - Train epoch: [4/40], batch: [0/2], loss: 1.10810, accuracy: 0.84375, learning rate: 0.00099039, speed: 15.13 data/sec, eta: 0:10:25
+[2023-03-28 01:17:44.284379 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.70s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.58it/s]
+[2023-03-28 01:17:51.008381 INFO   ] trainer:train:361 - Test epoch: 4, time/epoch: 0:00:19.033999, threshold: 0.74, tpr: 0.88667, fpr: 0.08102, eer: 0.19435
+[2023-03-28 01:17:51.009382 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:17:51.128381 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:17:51.300381 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_4
+[2023-03-28 01:17:59.935380 INFO   ] trainer:__train_epoch:285 - Train epoch: [5/40], batch: [0/2], loss: 0.94830, accuracy: 0.85156, learning rate: 0.00098296, speed: 14.83 data/sec, eta: 0:10:21
+[2023-03-28 01:18:03.661379 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.84s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 8335.26it/s]
+[2023-03-28 01:18:10.525381 INFO   ] trainer:train:361 - Test epoch: 5, time/epoch: 0:00:19.224001, threshold: 0.70, tpr: 0.88667, fpr: 0.08633, eer: 0.19966
+[2023-03-28 01:18:10.525381 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:18:10.699382 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_5
+[2023-03-28 01:18:19.467380 INFO   ] trainer:__train_epoch:285 - Train epoch: [6/40], batch: [0/2], loss: 0.65976, accuracy: 0.90625, learning rate: 0.00097347, speed: 14.60 data/sec, eta: 0:10:13
+[2023-03-28 01:18:23.380380 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.81s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.30it/s]
+[2023-03-28 01:18:30.212381 INFO   ] trainer:train:361 - Test epoch: 6, time/epoch: 0:00:19.513000, threshold: 0.67, tpr: 0.90667, fpr: 0.10551, eer: 0.19884
+[2023-03-28 01:18:30.213380 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:18:30.384379 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_6
+[2023-03-28 01:18:38.590379 INFO   ] trainer:__train_epoch:285 - Train epoch: [7/40], batch: [0/2], loss: 0.46794, accuracy: 0.94531, learning rate: 0.00096194, speed: 15.60 data/sec, eta: 0:09:17
+[2023-03-28 01:18:42.934380 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.80s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.01it/s]
+[2023-03-28 01:18:49.754382 INFO   ] trainer:train:361 - Test epoch: 7, time/epoch: 0:00:19.369001, threshold: 0.67, tpr: 0.90667, fpr: 0.09735, eer: 0.19068
+[2023-03-28 01:18:49.754382 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:18:49.863380 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:18:50.031380 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_7
+[2023-03-28 01:18:58.484380 INFO   ] trainer:__train_epoch:285 - Train epoch: [8/40], batch: [0/2], loss: 0.52217, accuracy: 0.93750, learning rate: 0.00094844, speed: 15.14 data/sec, eta: 0:09:17
+[2023-03-28 01:19:02.646391 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.79s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 8334.10it/s]
+[2023-03-28 01:19:09.459391 INFO   ] trainer:train:361 - Test epoch: 8, time/epoch: 0:00:19.428011, threshold: 0.66, tpr: 0.91333, fpr: 0.08735, eer: 0.17401
+[2023-03-28 01:19:09.459391 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:19:09.571965 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:19:09.742967 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_8
+[2023-03-28 01:19:18.386226 INFO   ] trainer:__train_epoch:285 - Train epoch: [9/40], batch: [0/2], loss: 0.43833, accuracy: 0.95312, learning rate: 0.00093301, speed: 14.81 data/sec, eta: 0:09:13
+[2023-03-28 01:19:22.321225 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.82s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7691.74it/s]
+[2023-03-28 01:19:29.156229 INFO   ] trainer:train:361 - Test epoch: 9, time/epoch: 0:00:19.413261, threshold: 0.62, tpr: 0.92667, fpr: 0.09367, eer: 0.16701
+[2023-03-28 01:19:29.157227 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:19:29.270226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:19:29.439226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_9
+[2023-03-28 01:19:38.113226 INFO   ] trainer:__train_epoch:285 - Train epoch: [10/40], batch: [0/2], loss: 0.41092, accuracy: 0.94531, learning rate: 0.00091573, speed: 14.76 data/sec, eta: 0:08:57
+[2023-03-28 01:19:41.739227 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.72s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.71it/s]
+[2023-03-28 01:19:48.476226 INFO   ] trainer:train:361 - Test epoch: 10, time/epoch: 0:00:19.036000, threshold: 0.61, tpr: 0.91333, fpr: 0.07041, eer: 0.15707
+[2023-03-28 01:19:48.476226 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:19:48.587226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:19:48.756226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_10
+[2023-03-28 01:19:57.621225 INFO   ] trainer:__train_epoch:285 - Train epoch: [11/40], batch: [0/2], loss: 0.35997, accuracy: 0.95312, learning rate: 0.00089668, speed: 14.44 data/sec, eta: 0:08:51
+[2023-03-28 01:20:01.352226 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.83s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.71it/s]
+[2023-03-28 01:20:08.198227 INFO   ] trainer:train:361 - Test epoch: 11, time/epoch: 0:00:19.441000, threshold: 0.56, tpr: 0.94000, fpr: 0.07755, eer: 0.13755
+[2023-03-28 01:20:08.198227 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:20:08.312227 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:20:08.485226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_11
+[2023-03-28 01:20:16.968227 INFO   ] trainer:__train_epoch:285 - Train epoch: [12/40], batch: [0/2], loss: 0.20848, accuracy: 0.99219, learning rate: 0.00087592, speed: 15.09 data/sec, eta: 0:08:11
+[2023-03-28 01:20:21.090227 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.80s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7696.54it/s]
+[2023-03-28 01:20:27.912227 INFO   ] trainer:train:361 - Test epoch: 12, time/epoch: 0:00:19.426001, threshold: 0.51, tpr: 0.94667, fpr: 0.08061, eer: 0.13395
+[2023-03-28 01:20:27.912227 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:20:28.025226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:20:28.197226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_12
+[2023-03-28 01:20:36.670226 INFO   ] trainer:__train_epoch:285 - Train epoch: [13/40], batch: [0/2], loss: 0.38981, accuracy: 0.91406, learning rate: 0.00085355, speed: 15.11 data/sec, eta: 0:07:54
+[2023-03-28 01:20:40.744226 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.88s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.30it/s]
+[2023-03-28 01:20:47.642227 INFO   ] trainer:train:361 - Test epoch: 13, time/epoch: 0:00:19.445001, threshold: 0.47, tpr: 0.94667, fpr: 0.07224, eer: 0.12558
+[2023-03-28 01:20:47.642227 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:20:47.753227 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:20:47.926226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_13
+[2023-03-28 01:20:56.397226 INFO   ] trainer:__train_epoch:285 - Train epoch: [14/40], batch: [0/2], loss: 0.17061, accuracy: 0.99219, learning rate: 0.00082967, speed: 15.11 data/sec, eta: 0:07:37
+[2023-03-28 01:21:00.462227 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.88s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.29it/s]
+[2023-03-28 01:21:07.360227 INFO   ] trainer:train:361 - Test epoch: 14, time/epoch: 0:00:19.434001, threshold: 0.41, tpr: 0.95333, fpr: 0.08082, eer: 0.12748
+[2023-03-28 01:21:07.361228 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:21:07.535226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_14
+[2023-03-28 01:21:16.294226 INFO   ] trainer:__train_epoch:285 - Train epoch: [15/40], batch: [0/2], loss: 0.25961, accuracy: 0.96875, learning rate: 0.00080438, speed: 14.62 data/sec, eta: 0:07:35
+[2023-03-28 01:21:20.192226 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.84s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7694.70it/s]
+[2023-03-28 01:21:27.049228 INFO   ] trainer:train:361 - Test epoch: 15, time/epoch: 0:00:19.514002, threshold: 0.42, tpr: 0.93333, fpr: 0.04939, eer: 0.11605
+[2023-03-28 01:21:27.049228 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:21:27.160226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:21:27.332226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_15
+[2023-03-28 01:21:35.825225 INFO   ] trainer:__train_epoch:285 - Train epoch: [16/40], batch: [0/2], loss: 0.10984, accuracy: 1.00000, learning rate: 0.00077779, speed: 15.07 data/sec, eta: 0:07:04
+[2023-03-28 01:21:39.933226 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.82s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.43it/s]
+[2023-03-28 01:21:46.772227 INFO   ] trainer:train:361 - Test epoch: 16, time/epoch: 0:00:19.440001, threshold: 0.43, tpr: 0.92000, fpr: 0.03224, eer: 0.11224
+[2023-03-28 01:21:46.773226 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:21:46.885226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:21:47.058227 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_16
+[2023-03-28 01:21:55.736226 INFO   ] trainer:__train_epoch:285 - Train epoch: [17/40], batch: [0/2], loss: 0.10148, accuracy: 1.00000, learning rate: 0.00075000, speed: 14.75 data/sec, eta: 0:06:56
+[2023-03-28 01:21:59.818226 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.85s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7694.42it/s]
+[2023-03-28 01:22:06.690226 INFO   ] trainer:train:361 - Test epoch: 17, time/epoch: 0:00:19.631000, threshold: 0.42, tpr: 0.92000, fpr: 0.03204, eer: 0.11204
+[2023-03-28 01:22:06.690226 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:22:06.804230 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:22:06.976226 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_17
+[2023-03-28 01:22:15.831226 INFO   ] trainer:__train_epoch:285 - Train epoch: [18/40], batch: [0/2], loss: 0.14330, accuracy: 0.99219, learning rate: 0.00072114, speed: 14.46 data/sec, eta: 0:06:47
+[2023-03-28 01:22:19.567226 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.83s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.01it/s]
+[2023-03-28 01:22:26.411842 INFO   ] trainer:train:361 - Test epoch: 18, time/epoch: 0:00:19.435616, threshold: 0.40, tpr: 0.92000, fpr: 0.03571, eer: 0.11571
+[2023-03-28 01:22:26.412840 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:22:26.586841 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_18
+[2023-03-28 01:22:35.147842 INFO   ] trainer:__train_epoch:285 - Train epoch: [19/40], batch: [0/2], loss: 0.09326, accuracy: 1.00000, learning rate: 0.00069134, speed: 14.95 data/sec, eta: 0:06:16
+[2023-03-28 01:22:39.274839 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.88s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7691.88it/s]
+[2023-03-28 01:22:46.168840 INFO   ] trainer:train:361 - Test epoch: 19, time/epoch: 0:00:19.580999, threshold: 0.41, tpr: 0.91333, fpr: 0.02878, eer: 0.11544
+[2023-03-28 01:22:46.169840 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:22:46.343839 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_19
+[2023-03-28 01:22:54.878736 INFO   ] trainer:__train_epoch:285 - Train epoch: [20/40], batch: [0/2], loss: 0.10559, accuracy: 0.99219, learning rate: 0.00066072, speed: 15.00 data/sec, eta: 0:05:58
+[2023-03-28 01:22:58.766736 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.85s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7691.45it/s]
+[2023-03-28 01:23:05.635737 INFO   ] trainer:train:361 - Test epoch: 20, time/epoch: 0:00:19.291898, threshold: 0.28, tpr: 0.98000, fpr: 0.09673, eer: 0.11673
+[2023-03-28 01:23:05.636736 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:23:05.807735 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_20
+[2023-03-28 01:23:14.609737 INFO   ] trainer:__train_epoch:285 - Train epoch: [21/40], batch: [0/2], loss: 0.09875, accuracy: 0.99219, learning rate: 0.00062941, speed: 14.54 data/sec, eta: 0:05:52
+[2023-03-28 01:23:18.324736 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.81s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 8335.76it/s]
+[2023-03-28 01:23:25.151736 INFO   ] trainer:train:361 - Test epoch: 21, time/epoch: 0:00:19.344001, threshold: 0.34, tpr: 0.94667, fpr: 0.05592, eer: 0.10925
+[2023-03-28 01:23:25.151736 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:23:25.264736 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:23:25.435738 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_21
+[2023-03-28 01:23:34.101736 INFO   ] trainer:__train_epoch:285 - Train epoch: [22/40], batch: [0/2], loss: 0.10893, accuracy: 0.99219, learning rate: 0.00059755, speed: 14.77 data/sec, eta: 0:05:29
+[2023-03-28 01:23:37.915737 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.71s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.43it/s]
+[2023-03-28 01:23:44.650258 INFO   ] trainer:train:361 - Test epoch: 22, time/epoch: 0:00:19.213522, threshold: 0.30, tpr: 0.96000, fpr: 0.06918, eer: 0.10918
+[2023-03-28 01:23:44.650258 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:23:44.764257 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:23:44.940257 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_22
+[2023-03-28 01:23:53.595106 INFO   ] trainer:__train_epoch:285 - Train epoch: [23/40], batch: [0/2], loss: 0.10757, accuracy: 0.99219, learning rate: 0.00056526, speed: 14.79 data/sec, eta: 0:05:11
+[2023-03-28 01:23:57.511233 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.83s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 8332.12it/s]
+[2023-03-28 01:24:04.363220 INFO   ] trainer:train:361 - Test epoch: 23, time/epoch: 0:00:19.422962, threshold: 0.31, tpr: 0.94667, fpr: 0.05735, eer: 0.11068
+[2023-03-28 01:24:04.363220 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:24:04.538219 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_23
+[2023-03-28 01:24:13.533149 INFO   ] trainer:__train_epoch:285 - Train epoch: [24/40], batch: [0/2], loss: 0.07472, accuracy: 0.99219, learning rate: 0.00053270, speed: 14.23 data/sec, eta: 0:05:05
+[2023-03-28 01:24:17.221837 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.85s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.72it/s]
+[2023-03-28 01:24:24.093836 INFO   ] trainer:train:361 - Test epoch: 24, time/epoch: 0:00:19.555617, threshold: 0.31, tpr: 0.94667, fpr: 0.05245, eer: 0.10578
+[2023-03-28 01:24:24.093836 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:24:24.203836 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:24:24.374837 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_24
+[2023-03-28 01:24:32.854836 INFO   ] trainer:__train_epoch:285 - Train epoch: [25/40], batch: [0/2], loss: 0.05235, accuracy: 1.00000, learning rate: 0.00050000, speed: 15.10 data/sec, eta: 0:04:31
+[2023-03-28 01:24:36.933836 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.86s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.85it/s]
+[2023-03-28 01:24:43.815836 INFO   ] trainer:train:361 - Test epoch: 25, time/epoch: 0:00:19.439999, threshold: 0.31, tpr: 0.94667, fpr: 0.04837, eer: 0.10170
+[2023-03-28 01:24:43.815836 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:24:43.928836 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:24:44.098836 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_25
+[2023-03-28 01:24:53.169836 INFO   ] trainer:__train_epoch:285 - Train epoch: [26/40], batch: [0/2], loss: 0.05324, accuracy: 1.00000, learning rate: 0.00046730, speed: 14.11 data/sec, eta: 0:04:32
+[2023-03-28 01:24:56.827837 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.89s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.44it/s]
+[2023-03-28 01:25:03.734836 INFO   ] trainer:train:361 - Test epoch: 26, time/epoch: 0:00:19.635000, threshold: 0.31, tpr: 0.94667, fpr: 0.04408, eer: 0.09741
+[2023-03-28 01:25:03.735836 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:25:03.847836 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:25:04.030837 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_26
+[2023-03-28 01:25:12.673836 INFO   ] trainer:__train_epoch:285 - Train epoch: [27/40], batch: [0/2], loss: 0.05244, accuracy: 1.00000, learning rate: 0.00043474, speed: 14.81 data/sec, eta: 0:04:02
+[2023-03-28 01:25:16.627836 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.80s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.71it/s]
+[2023-03-28 01:25:23.444836 INFO   ] trainer:train:361 - Test epoch: 27, time/epoch: 0:00:19.413998, threshold: 0.31, tpr: 0.94667, fpr: 0.04469, eer: 0.09803
+[2023-03-28 01:25:23.444836 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:25:23.620836 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_27
+[2023-03-28 01:25:32.198837 INFO   ] trainer:__train_epoch:285 - Train epoch: [28/40], batch: [0/2], loss: 0.03555, accuracy: 1.00000, learning rate: 0.00040245, speed: 14.92 data/sec, eta: 0:03:43
+[2023-03-28 01:25:36.193838 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.74s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7691.88it/s]
+[2023-03-28 01:25:42.950837 INFO   ] trainer:train:361 - Test epoch: 28, time/epoch: 0:00:19.329000, threshold: 0.29, tpr: 0.96667, fpr: 0.05796, eer: 0.09129
+[2023-03-28 01:25:42.951836 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:25:43.066836 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:25:43.236836 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_28
+[2023-03-28 01:25:52.099836 INFO   ] trainer:__train_epoch:285 - Train epoch: [29/40], batch: [0/2], loss: 0.08280, accuracy: 0.99219, learning rate: 0.00037059, speed: 14.44 data/sec, eta: 0:03:32
+[2023-03-28 01:25:55.965837 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.89s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.16it/s]
+[2023-03-28 01:26:02.879577 INFO   ] trainer:train:361 - Test epoch: 29, time/epoch: 0:00:19.641741, threshold: 0.29, tpr: 0.96667, fpr: 0.05816, eer: 0.09150
+[2023-03-28 01:26:02.879577 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:26:03.055577 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_29
+[2023-03-28 01:26:11.607577 INFO   ] trainer:__train_epoch:285 - Train epoch: [30/40], batch: [0/2], loss: 0.04367, accuracy: 1.00000, learning rate: 0.00033928, speed: 14.97 data/sec, eta: 0:03:08
+[2023-03-28 01:26:15.669577 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.89s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 8333.94it/s]
+[2023-03-28 01:26:22.579579 INFO   ] trainer:train:361 - Test epoch: 30, time/epoch: 0:00:19.524002, threshold: 0.29, tpr: 0.96667, fpr: 0.05857, eer: 0.09190
+[2023-03-28 01:26:22.580577 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:26:22.752579 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_30
+[2023-03-28 01:26:31.529577 INFO   ] trainer:__train_epoch:285 - Train epoch: [31/40], batch: [0/2], loss: 0.04266, accuracy: 0.99219, learning rate: 0.00030866, speed: 14.59 data/sec, eta: 0:02:55
+[2023-03-28 01:26:35.256577 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:07<00:00,  7.02s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7692.87it/s]
+[2023-03-28 01:26:42.292580 INFO   ] trainer:train:361 - Test epoch: 31, time/epoch: 0:00:19.539000, threshold: 0.28, tpr: 0.97333, fpr: 0.06327, eer: 0.08993
+[2023-03-28 01:26:42.292580 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:26:42.401577 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:26:42.568577 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_31
+[2023-03-28 01:26:51.290577 INFO   ] trainer:__train_epoch:285 - Train epoch: [32/40], batch: [0/2], loss: 0.04932, accuracy: 1.00000, learning rate: 0.00027886, speed: 14.68 data/sec, eta: 0:02:36
+[2023-03-28 01:26:55.144577 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.82s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.01it/s]
+[2023-03-28 01:27:01.981577 INFO   ] trainer:train:361 - Test epoch: 32, time/epoch: 0:00:19.412000, threshold: 0.28, tpr: 0.96667, fpr: 0.06061, eer: 0.09395
+[2023-03-28 01:27:01.981577 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:27:02.160577 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_32
+[2023-03-28 01:27:10.744576 INFO   ] trainer:__train_epoch:285 - Train epoch: [33/40], batch: [0/2], loss: 0.05194, accuracy: 1.00000, learning rate: 0.00025000, speed: 14.91 data/sec, eta: 0:02:17
+[2023-03-28 01:27:14.653577 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.82s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.71it/s]
+[2023-03-28 01:27:21.493577 INFO   ] trainer:train:361 - Test epoch: 33, time/epoch: 0:00:19.333000, threshold: 0.28, tpr: 0.97333, fpr: 0.05816, eer: 0.08483
+[2023-03-28 01:27:21.494578 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:27:21.604577 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\best_model
+[2023-03-28 01:27:21.774581 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_33
+[2023-03-28 01:27:30.022578 INFO   ] trainer:__train_epoch:285 - Train epoch: [34/40], batch: [0/2], loss: 0.03056, accuracy: 1.00000, learning rate: 0.00022221, speed: 15.52 data/sec, eta: 0:01:55
+[2023-03-28 01:27:34.328577 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.66s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.15it/s]
+[2023-03-28 01:27:41.004577 INFO   ] trainer:train:361 - Test epoch: 34, time/epoch: 0:00:19.229996, threshold: 0.27, tpr: 0.97333, fpr: 0.06367, eer: 0.09034
+[2023-03-28 01:27:41.004577 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:27:41.180578 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_34
+[2023-03-28 01:27:49.559577 INFO   ] trainer:__train_epoch:285 - Train epoch: [35/40], batch: [0/2], loss: 0.02863, accuracy: 1.00000, learning rate: 0.00019562, speed: 15.28 data/sec, eta: 0:01:40
+[2023-03-28 01:27:53.720255 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.79s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.15it/s]
+[2023-03-28 01:28:00.532257 INFO   ] trainer:train:361 - Test epoch: 35, time/epoch: 0:00:19.351680, threshold: 0.29, tpr: 0.96667, fpr: 0.05163, eer: 0.08497
+[2023-03-28 01:28:00.532257 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:28:00.712256 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_35
+[2023-03-28 01:28:09.466256 INFO   ] trainer:__train_epoch:285 - Train epoch: [36/40], batch: [0/2], loss: 0.02816, accuracy: 1.00000, learning rate: 0.00017033, speed: 14.62 data/sec, eta: 0:01:27
+[2023-03-28 01:28:13.397257 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.80s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7691.88it/s]
+[2023-03-28 01:28:20.215257 INFO   ] trainer:train:361 - Test epoch: 36, time/epoch: 0:00:19.503001, threshold: 0.27, tpr: 0.97333, fpr: 0.06184, eer: 0.08850
+[2023-03-28 01:28:20.216256 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:28:20.387256 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_36
+[2023-03-28 01:28:29.409256 INFO   ] trainer:__train_epoch:285 - Train epoch: [37/40], batch: [0/2], loss: 0.02822, accuracy: 1.00000, learning rate: 0.00014645, speed: 14.19 data/sec, eta: 0:01:12
+[2023-03-28 01:28:33.073256 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.86s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.29it/s]
+[2023-03-28 01:28:39.950268 INFO   ] trainer:train:361 - Test epoch: 37, time/epoch: 0:00:19.562012, threshold: 0.28, tpr: 0.96667, fpr: 0.05653, eer: 0.08986
+[2023-03-28 01:28:39.950268 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:28:40.126258 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_37
+[2023-03-28 01:28:48.700698 INFO   ] trainer:__train_epoch:285 - Train epoch: [38/40], batch: [0/2], loss: 0.03720, accuracy: 1.00000, learning rate: 0.00012408, speed: 14.93 data/sec, eta: 0:00:51
+[2023-03-28 01:28:52.649638 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.78s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7693.85it/s]
+[2023-03-28 01:28:59.448681 INFO   ] trainer:train:361 - Test epoch: 38, time/epoch: 0:00:19.322423, threshold: 0.28, tpr: 0.96667, fpr: 0.05551, eer: 0.08884
+[2023-03-28 01:28:59.449680 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:28:59.625681 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_38
+[2023-03-28 01:29:08.250664 INFO   ] trainer:__train_epoch:285 - Train epoch: [39/40], batch: [0/2], loss: 0.02790, accuracy: 1.00000, learning rate: 0.00010332, speed: 14.84 data/sec, eta: 0:00:34
+[2023-03-28 01:29:12.309599 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.86s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 8360.68it/s]
+[2023-03-28 01:29:19.184592 INFO   ] trainer:train:361 - Test epoch: 39, time/epoch: 0:00:19.557910, threshold: 0.28, tpr: 0.96667, fpr: 0.05429, eer: 0.08762
+[2023-03-28 01:29:19.184592 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:29:19.358644 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_39
+[2023-03-28 01:29:27.927844 INFO   ] trainer:__train_epoch:285 - Train epoch: [40/40], batch: [0/2], loss: 0.04025, accuracy: 1.00000, learning rate: 0.00008427, speed: 14.94 data/sec, eta: 0:00:17
+[2023-03-28 01:29:31.893844 INFO   ] trainer:train:359 - ======================================================================
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.77s/it]
+开始两两对比音频特征...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 7691.88it/s]
+[2023-03-28 01:29:38.681846 INFO   ] trainer:train:361 - Test epoch: 40, time/epoch: 0:00:19.322202, threshold: 0.30, tpr: 0.95333, fpr: 0.04612, eer: 0.09279
+[2023-03-28 01:29:38.682844 INFO   ] trainer:train:364 - ======================================================================
+[2023-03-28 01:29:38.856845 INFO   ] trainer:__save_checkpoint:244 - 已保存模型：models/EcapaTdnn_50_EnY_MFCC_CELost_AdamW/EcapaTdnn_MFCC\epoch_40
